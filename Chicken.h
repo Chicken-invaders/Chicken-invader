@@ -8,14 +8,18 @@ class Chicken : public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 
 private:
-    QTimer *timer;
     int lives;
     int index;
     int counter;
     int counter2;
+    int stopCounter;
+    QTimer * moveTimer;
+    QTimer * motionTimer;
+    QTimer * inPlaceMotionTimer;
 
 public:
     Chicken(int row);
+public slots:
     void moveDown();
     void motionWings();
     void inPlaceMotion();
