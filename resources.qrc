@@ -4,5 +4,8 @@
         <file>chicken0.png</file>
         <file>chicken1.png</file>
         <file>chicken2.png</file>
+        <file>scoreboard.png</file>
+        <file>heart.png</file>
+        <file>heartback.png</file>
     </qresource>
 </RCC>

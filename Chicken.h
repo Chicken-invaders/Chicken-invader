@@ -8,7 +8,6 @@ class Chicken : public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 
 private:
-    QTimer *timer;
     int lives;
     int index;
     int counter;

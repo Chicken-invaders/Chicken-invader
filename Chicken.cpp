@@ -12,23 +12,24 @@ void Chicken::moveDown()
 void Chicken::motionWings()
 {
     counter++;
-    if(counter % 3 == 0)
+    if(counter % 4 == 0)
     setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken0.png"));
-else  if(counter % 3 == 1)
+    else  if(counter % 4 == 1)
     setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken1.png"));
-    else  if(counter % 3 == 2)
+    else  if(counter % 4 == 2)
     setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken2.png"));
-
+    else  if(counter % 4 == 3)
+    setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken1.png"));
 }
 
 void Chicken::inPlaceMotion()
 {
     counter2++;
     if(counter2 % 2 == 0){
-        moveBy(0 , 5);
+        moveBy(0 , -5);
     }
     else {
-        moveBy(0 , -5);
+        moveBy(0 , 5);
     }
 }
 

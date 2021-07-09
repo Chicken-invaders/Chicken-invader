@@ -12,6 +12,9 @@ private:
 
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
+    QGraphicsPixmapItem * scoreBoard;
+    QGraphicsPixmapItem * heartIcon;
+    QGraphicsPixmapItem * heartBack;
     QTimer * moveTimer;
     QTimer * motionTimer;
     QTimer * inPlaceMotionTimer;
