@@ -24,9 +24,9 @@ public:
      ~View();
      void addChicken(int index);
 public slots:
-void viewMove();
-void viewMotion();
-void inPlaceMotion();
+//void viewMove();
+//void viewMotion();
+//void inPlaceMotion();
 
 signals:
 

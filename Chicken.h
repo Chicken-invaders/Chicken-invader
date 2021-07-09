@@ -12,9 +12,14 @@ private:
     int index;
     int counter;
     int counter2;
+    int stopCounter;
+    QTimer * moveTimer;
+    QTimer * motionTimer;
+    QTimer * inPlaceMotionTimer;
 
 public:
     Chicken(int row);
+public slots:
     void moveDown();
     void motionWings();
     void inPlaceMotion();
