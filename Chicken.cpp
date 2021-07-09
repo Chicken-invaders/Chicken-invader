@@ -29,13 +29,13 @@ void Chicken::motionWings()
 {
     counter++;
     if(counter % 4 == 0)
-    setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken0.png"));
+    setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/chicken0.png"));
     else  if(counter % 4 == 1)
-    setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken1.png"));
+    setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/chicken1.png"));
     else  if(counter % 4 == 2)
-    setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken2.png"));
+    setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/chicken2.png"));
     else  if(counter % 4 == 3)
-    setPixmap(QPixmap("C:/Users/AmirHMN/Desktop/Chicken-Invader/Chicken-Invaders/chicken1.png"));
+    setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/chicken1.png"));
 }
 
 void Chicken::inPlaceMotion()

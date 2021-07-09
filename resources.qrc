@@ -7,5 +7,6 @@
         <file>scoreboard.png</file>
         <file>heart.png</file>
         <file>heartback.png</file>
+        <file>spaceshipp.png</file>
     </qresource>
 </RCC>
