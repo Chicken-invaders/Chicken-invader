@@ -6,17 +6,22 @@
 #include <QObject>
 #include <QCursor>
 #include <QGraphicsView>
+#include <Chicken.h>
+#include <QTimer>
+#include <QMessageBox>
 
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
-    int lives;
+    int lives=3;
     Bullet* bullet;
-
+    QTimer * timer;
 
 public:
     SpaceShip();
+public slots:
+    void Collision();
 
 
 };

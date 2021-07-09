@@ -79,4 +79,5 @@ void View::addChicken(int index)
 void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
+ spaceship->Collision();
 }
