@@ -3,16 +3,27 @@
 
 #include <QObject>
 #include <QGraphicsView>
-#include <QGraphicsScene>
 #include <QTimer>
+#include "Chicken.h"
 class View : public QGraphicsView
 {
     Q_OBJECT
 private:
-     QGraphicsScene * scene;
-     QTimer * viewTimer;
+
+    QGraphicsScene * scene;
+    QGraphicsRectItem * rectItem;
+    QTimer * moveTimer;
+    QTimer * motionTimer;
+    QTimer * inPlaceMotionTimer;
+    QVector <Chicken *> chickens;
 public:
     explicit View();
+     ~View();
+     void addChicken(int index);
+public slots:
+void viewMove();
+void viewMotion();
+void inPlaceMotion();
 
 signals:
 
