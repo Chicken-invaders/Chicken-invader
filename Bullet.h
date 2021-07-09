@@ -4,8 +4,14 @@
 
 class Bullet
 {
+
 public:
     Bullet();
+
+
+ public slots:
+    void moveUp();
+
 };
 
 #endif // BULLET_H

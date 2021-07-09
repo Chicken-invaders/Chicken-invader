@@ -41,6 +41,9 @@ for (int i = 0 ; i < 20 ; i++ ) {
 }
 spaceship=new SpaceShip();
 scene->addItem(spaceship);
+auto musicPlayer =new QMediaPlayer();
+musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
+musicPlayer->play();
 
 }
 

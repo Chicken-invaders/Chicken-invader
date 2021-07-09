@@ -1,7 +1,7 @@
 #include "Spaceship.h"
 
 SpaceShip::SpaceShip()
-{
+{ lives=3;
    setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/spaceshipp.png"));
 setPos(910,800);
 //timer =new QTimer();
@@ -18,7 +18,7 @@ for(int i=0;i<collidingitems.size();i++){
                     lives--;
     }
 if(lives==0)
-   exit(1);//TODO
+   exit(1);//TO DO
 }
 }
 
