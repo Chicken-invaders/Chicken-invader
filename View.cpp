@@ -47,10 +47,7 @@ auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
 //bullet part
-    bullet=new Bullet();
 
-    scene->addItem(bullet);
-    bullet->setPos(spaceship->x(),spaceship->y());
 //addBullet();
 
 }
@@ -92,6 +89,17 @@ void View::mouseMoveEvent(QMouseEvent * event)
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
 
+}
+
+void View::keyPressEvent(QKeyEvent* click)
+{
+    if(click->key()==Qt::Key_Space)
+    {
+        bullet=new Bullet();
+
+        scene->addItem(bullet);
+        bullet->setPos(spaceship->x(),spaceship->y());
+    }
 }
 
 //void View::addBullet()

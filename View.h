@@ -9,6 +9,7 @@
 #include <QCursor>
 #include <QMediaPlayer>
 #include "Bullet.h"
+#include <QKeyEvent>
 
 class View : public QGraphicsView
 {
@@ -33,6 +34,7 @@ public:
      void addChicken(int index);
        void mouseMoveEvent(QMouseEvent * event);
        void addBullet();
+       void keyPressEvent(QKeyEvent *);
 
 public slots:
 //void viewMove();
