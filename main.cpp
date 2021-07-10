@@ -1,10 +1,11 @@
 #include <QApplication>
 #include "View.h"
-#include "View.h"
+
+View * v;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-  View v;
-  v.show();
+    v = new View();
+    v->show();
     return a.exec();
 }

@@ -9,29 +9,27 @@
 #include <QCursor>
 #include <QMediaPlayer>
 #include "Bullet.h"
+#include "Score.h"
 #include <QKeyEvent>
 
 class View : public QGraphicsView
 {
-    friend class Controller;
+
     Q_OBJECT
 private:
-
+    friend class Bullet;
     QTimer * vtimer;
     bool flag;
     int sec;
-
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
     QGraphicsPixmapItem * scoreBoard;
     QGraphicsPixmapItem * heartIcon;
     QGraphicsPixmapItem * heartBack;
-    QTimer * moveTimer;
-    QTimer * motionTimer;
-    QTimer * inPlaceMotionTimer;
     QVector <Chicken *> chickens;
     SpaceShip * spaceship;
     Bullet * bullet;
+    Score * score;
 
 
 public: QList<QGraphicsItem *> deltedObjects;
@@ -46,8 +44,6 @@ public: QList<QGraphicsItem *> deltedObjects;
 
 public slots:
 void schedule();
-
-signals:
 
 };
 

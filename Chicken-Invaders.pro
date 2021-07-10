@@ -12,6 +12,7 @@ SOURCES += \
     Bullet.cpp \
     Chicken.cpp \
     Controller.cpp \
+    Score.cpp \
     Spaceship.cpp \
     View.cpp \
     main.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     Bullet.h \
     Chicken.h \
     Controller.h \
+    Score.h \
     Spaceship.h \
     View.h
 

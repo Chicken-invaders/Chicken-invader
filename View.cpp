@@ -1,6 +1,6 @@
 #include "View.h"
 #include "QThread"
-
+#include "QDebug"
 View::View() : QGraphicsView() , sec(0) , level(1) , flag(true)
 {
     QCursor cursor(Qt::BlankCursor);
@@ -45,6 +45,9 @@ setFixedSize(1920,1080);
 setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+//set score
+
+
 vtimer = new QTimer();
 connect(vtimer , SIGNAL(timeout()) , this , SLOT(schedule()));
 vtimer->start(1000);
@@ -55,6 +58,10 @@ musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
 
  addSpaceShip();
+
+ score = new Score();
+ scene->addItem(score);
+ score->setPos(50 ,2);
 }
 
 View::~View()
@@ -83,7 +90,6 @@ void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
-
 }
 
 void View::addSpaceShip()
@@ -99,13 +105,13 @@ void View::keyPressEvent(QKeyEvent* click)
         bullet=new Bullet();
         scene->addItem(bullet);
         bullet->setPos(spaceship->x()+36,spaceship->y()-36);
+
     }
 
 }
 
 void View::schedule()
 {
-
     sec ++;
    if((sec == 4 || level == 2) && flag){
        if(level == 1)
@@ -115,8 +121,7 @@ void View::schedule()
        flag = false;
        }
    }
-   if( sec > 4 && chickens.size() == 0){
+   if(score->scores == 100){
        level = 2;
    }
 }
-

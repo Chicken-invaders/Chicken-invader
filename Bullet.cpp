@@ -1,4 +1,9 @@
 #include "Bullet.h"
+
+#include "View.h"
+
+extern View * v;
+
 Bullet::Bullet()
 {
 setPixmap(QPixmap(":/ images/bullet2.png"));
@@ -17,6 +22,7 @@ for(int i=0;i<collidingitems.size();i++){
     {
         delete collidingitems[i];
         collidingitems[i] = nullptr;
+        v->score->increase(5);
         delete this;
     }
   }
