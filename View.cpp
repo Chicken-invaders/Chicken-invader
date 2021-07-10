@@ -96,10 +96,10 @@ void View::keyPressEvent(QKeyEvent* click)
     if(click->key()==Qt::Key_Space)
     {
         bullet=new Bullet();
-
         scene->addItem(bullet);
-        bullet->setPos(spaceship->x(),spaceship->y());
+        bullet->setPos(spaceship->x()+36,spaceship->y()-36);
     }
+
 }
 
 //void View::addBullet()
