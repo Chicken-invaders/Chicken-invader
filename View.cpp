@@ -15,21 +15,21 @@ setScene(scene);
 //setWindowFlags(Qt::Window|Qt::FramelessWindowHint);
 
 //set background
-setBackgroundBrush(QBrush(QImage("C:/Users/Hossein/Desktop/ap/Chicken-invader/background.jpg")));
+setBackgroundBrush(QBrush(QImage(":/ images/background.jpg")));
 
 //set score board
 scoreBoard=new QGraphicsPixmapItem();
-scoreBoard->setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/scoreboard.png"));
+scoreBoard->setPixmap(QPixmap(":/ images/scoreboard.png"));
 scene->addItem(scoreBoard);
 scoreBoard->setPos(2,2);
 //set heart background
 heartBack=new QGraphicsPixmapItem();
-heartBack->setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/heartback.png"));
+heartBack->setPixmap(QPixmap(":/ images/heartback.png"));
 scene->addItem(heartBack);
 heartBack->setPos(2,1030);
 //set heart icon
 heartIcon=new QGraphicsPixmapItem();
-heartIcon->setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/heart.png"));
+heartIcon->setPixmap(QPixmap(":/ images/heart.png"));
 scene->addItem(heartIcon);
 heartIcon->setPos(150,1030);
 //fix size

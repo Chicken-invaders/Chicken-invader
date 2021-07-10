@@ -2,7 +2,7 @@
 
 SpaceShip::SpaceShip()
 { lives=3;
-   setPixmap(QPixmap("C:/Users/Hossein/Desktop/ap/Chicken-invader/spaceshipp.png"));
+   setPixmap(QPixmap(":/ images/spaceshipp.png"));
 setPos(910,800);
 //timer =new QTimer();
 //connect(timer , SIGNAL(timeout()) , this , SLOT(Collision()));
