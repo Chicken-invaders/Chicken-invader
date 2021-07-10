@@ -6,22 +6,17 @@
 #include <QGraphicsRectItem>
 #include <QVector>
 #include <QTimer>
-#include <QGraphicsView>
 #include "Chicken.h"
-#include "View.h"
 
-class Controller : QGraphicsView
+class Controller : public QObject
 {
     Q_OBJECT
 private:
-    int level;
+
 public:
-    View * v;
-    QTimer * timer;
-     Controller();
+    explicit Controller(QObject *parent = nullptr);
     ~Controller();
-public slots:
-     void add();
+
 };
 
 #endif // CONTROLLER_H

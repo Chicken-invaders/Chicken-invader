@@ -8,12 +8,11 @@
 class Bullet:  public QObject , public QGraphicsPixmapItem
 {
    Q_OBJECT
-public:
-
+    public:
     Bullet();
 
     QTimer* timer;
-    QList<QGraphicsItem *> collision();
+    void collision();
 
  public slots:
     void moveUp();

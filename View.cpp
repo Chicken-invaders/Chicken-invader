@@ -106,7 +106,6 @@ void View::keyPressEvent(QKeyEvent* click)
 void View::schedule()
 {
 
-
     sec ++;
    if((sec == 4 || level == 2) && flag){
        if(level == 1)

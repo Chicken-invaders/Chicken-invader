@@ -1,5 +1,4 @@
 #include "Bullet.h"
-
 Bullet::Bullet()
 {
 setPixmap(QPixmap(":/ images/bullet2.png"));
@@ -10,17 +9,17 @@ timer->start(50);
 
 }
 
-QList<QGraphicsItem *> Bullet::collision()
+void Bullet::collision()
 {
     QList<QGraphicsItem *> collidingitems = collidingItems();
 for(int i=0;i<collidingitems.size();i++){
     if(typeid (*(collidingitems[i]))==typeid (Chicken))
-   {     delete [] collidingitems[i];
+    {
+        delete collidingitems[i];
+        collidingitems[i] = nullptr;
         delete this;
     }
-
-}
-return collidingitems;
+  }
 }
 
 void Bullet::moveUp()
