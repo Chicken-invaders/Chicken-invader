@@ -7,5 +7,10 @@
         <file>scoreboard.png</file>
         <file>heart.png</file>
         <file>heartback.png</file>
+        <file>spaceshipp.png</file>
+        <file>bullet.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>02-04. Main Theme (Remastered).mp3</file>
     </qresource>
 </RCC>
