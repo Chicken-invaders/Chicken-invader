@@ -39,11 +39,19 @@ setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 for (int i = 0 ; i < 20 ; i++ ) {
     addChicken(i);
 }
+//spaceship part
 spaceship=new SpaceShip();
 scene->addItem(spaceship);
+//
 auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
+//bullet part
+    bullet=new Bullet();
+
+    scene->addItem(bullet);
+    bullet->setPos(spaceship->x(),spaceship->y());
+//addBullet();
 
 }
 
@@ -83,4 +91,14 @@ void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
+
 }
+
+//void View::addBullet()
+//{
+//    bullet=new Bullet();
+
+//    scene->addItem(bullet);
+//bullet->setPos(1000,900);
+
+//}

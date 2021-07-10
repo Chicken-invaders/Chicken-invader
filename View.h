@@ -8,6 +8,7 @@
 #include "Spaceship.h"
 #include <QCursor>
 #include <QMediaPlayer>
+#include "Bullet.h"
 
 class View : public QGraphicsView
 {
@@ -24,11 +25,14 @@ private:
     QTimer * inPlaceMotionTimer;
     QVector <Chicken *> chickens;
     SpaceShip * spaceship;
+    Bullet * bullet;
+
 public:
     explicit View();
      ~View();
      void addChicken(int index);
        void mouseMoveEvent(QMouseEvent * event);
+       void addBullet();
 
 public slots:
 //void viewMove();
