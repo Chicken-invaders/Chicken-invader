@@ -13,8 +13,13 @@
 
 class View : public QGraphicsView
 {
+    friend class Controller;
     Q_OBJECT
 private:
+
+    QTimer * vtimer;
+    bool flag;
+    int sec;
 
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
@@ -28,18 +33,19 @@ private:
     SpaceShip * spaceship;
     Bullet * bullet;
 
-public:
-    explicit View();
-     ~View();
-     void addChicken(int index);
+
+public: QList<QGraphicsItem *> deltedObjects;
+      int level;
+      explicit View();
+       ~View();
+       void addChicken(int index);
        void mouseMoveEvent(QMouseEvent * event);
        void addBullet();
+       void addSpaceShip();
        void keyPressEvent(QKeyEvent *);
 
 public slots:
-//void viewMove();
-//void viewMotion();
-//void inPlaceMotion();
+void schedule();
 
 signals:
 

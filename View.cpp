@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 
-View::View() : QGraphicsView()
+View::View() : QGraphicsView() , sec(0) , level(1) , flag(true)
 {
     QCursor cursor(Qt::BlankCursor);
         setCursor(cursor);
@@ -12,83 +12,84 @@ scene = new QGraphicsScene();
 scene->setSceneRect(0,0,1920,1080);
 setScene(scene);
 
-//setWindowFlags(Qt::Window|Qt::FramelessWindowHint);
+setWindowFlags(Qt::Window|Qt::FramelessWindowHint);
 
 //set background
 setBackgroundBrush(QBrush(QImage(":/ images/background.jpg")));
+
+
 
 //set score board
 scoreBoard=new QGraphicsPixmapItem();
 scoreBoard->setPixmap(QPixmap(":/ images/scoreboard.png"));
 scene->addItem(scoreBoard);
 scoreBoard->setPos(2,2);
+
+
 //set heart background
 heartBack=new QGraphicsPixmapItem();
 heartBack->setPixmap(QPixmap(":/ images/heartback.png"));
 scene->addItem(heartBack);
 heartBack->setPos(2,1030);
+
+
 //set heart icon
 heartIcon=new QGraphicsPixmapItem();
 heartIcon->setPixmap(QPixmap(":/ images/heart.png"));
 scene->addItem(heartIcon);
 heartIcon->setPos(150,1030);
+
+
 //fix size
 setFixedSize(1920,1080);
 setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-for (int i = 0 ; i < 20 ; i++ ) {
-    addChicken(i);
-}
-//spaceship part
-spaceship=new SpaceShip();
-scene->addItem(spaceship);
-//
+
+vtimer = new QTimer();
+connect(vtimer , SIGNAL(timeout()) , this , SLOT(schedule()));
+vtimer->start(1000);
+
+
 auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
-//bullet part
 
-//addBullet();
-
+ addSpaceShip();
 }
 
 View::~View()
-{}
+{
 
-//void View::viewMove()
-//{
-//    for (int i = 0 ; i < 20 ; i++ ) {
-//          if(chickens[19]->y() < 500)
-//        chickens[i]->moveDown();
-//    }
-//}
+}
 
-//void View::viewMotion()
-//{
-//    for (int i = 0 ; i < 20 ; i++ ) {
-//        chickens[i]->motionWings();
-//    }
-//}
-
-//void View::inPlaceMotion()
-//{
-//    qrand();
-//    for (int i = 0 ; i < 20 ; i++ ) {
-//          chickens[i]->inPlaceMotion();
-//    }
-//}
 
 void View::addChicken(int index)
 {
-   chickens.push_back(new Chicken((index / 5)));
+    int col;
+    int pos_x;
+    if(level == 1){
+        col =5;
+    }else if(level == 2){
+        col = 9;
+    }
+    pos_x =960 - ((col/2) * 150 + 50);
+    for(int i = 0 ; i < index ; i++){
+   chickens.push_back(new Chicken((i / col)));
    scene->addItem(chickens.last());
-   chickens.last()->setPos(610 + (index % 5)*150 ,-90);
+   chickens.last()->setPos(pos_x + (i % col)*150 ,-90);
+    }
 }
 void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
 
+}
+
+void View::addSpaceShip()
+{
+    spaceship=new SpaceShip();
+    scene->addItem(spaceship);
 }
 
 void View::keyPressEvent(QKeyEvent* click)
@@ -102,11 +103,21 @@ void View::keyPressEvent(QKeyEvent* click)
 
 }
 
-//void View::addBullet()
-//{
-//    bullet=new Bullet();
+void View::schedule()
+{
 
-//    scene->addItem(bullet);
-//bullet->setPos(1000,900);
 
-//}
+    sec ++;
+   if((sec == 4 || level == 2) && flag){
+       if(level == 1)
+       addChicken(20);
+       else if (level == 2){
+       addChicken(36);
+       flag = false;
+       }
+   }
+   if( sec > 4 && chickens.size() == 0){
+       level = 2;
+   }
+}
+

@@ -9,7 +9,7 @@ class Chicken : public QObject , public QGraphicsPixmapItem
 
 private:
     int lives;
-    int index;
+    int row;
     int counter;
     int counter2;
     int stopCounter;

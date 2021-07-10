@@ -10,23 +10,24 @@ timer->start(50);
 
 }
 
-void Bullet::collision()
+QList<QGraphicsItem *> Bullet::collision()
 {
-    QList<QGraphicsItem *> collidingitems= collidingItems();
+    QList<QGraphicsItem *> collidingitems = collidingItems();
 for(int i=0;i<collidingitems.size();i++){
     if(typeid (*(collidingitems[i]))==typeid (Chicken))
-   {     delete collidingitems[i];
+   {     delete [] collidingitems[i];
         delete this;
-
     }
 
 }
+return collidingitems;
 }
-
-
 
 void Bullet::moveUp()
 {
 moveBy(0,-27);
 collision();
+if(y() < 0){
+    delete this;
+}
 }

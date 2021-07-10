@@ -1,6 +1,6 @@
 #include "Chicken.h"
 
-Chicken::Chicken(int row) : index (row)
+Chicken::Chicken(int row) : row (row)
 {counter = 0;
 counter2=0;
 stopCounter = 0;
@@ -18,9 +18,9 @@ inPlaceMotionTimer->start(200);
 
 void Chicken::moveDown()
 {
-    moveBy(0 , (index+1) * 5);
+    moveBy(0 , (row+1) * 5);
     stopCounter++;
-    if(stopCounter == 29){
+    if(stopCounter == 30){
           disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
 
    }
