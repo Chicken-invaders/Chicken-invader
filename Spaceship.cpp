@@ -1,12 +1,10 @@
 #include "Spaceship.h"
 
 SpaceShip::SpaceShip()
-{ lives=3;
+{
+   lives = new Lives();
    setPixmap(QPixmap(":/ images/spaceshipp.png"));
-setPos(910,800);
-//timer =new QTimer();
-//connect(timer , SIGNAL(timeout()) , this , SLOT(Collision()));
-//timer->start(10);
+   setPos(910,800);
 }
 
 void SpaceShip::Collision()
@@ -15,11 +13,9 @@ void SpaceShip::Collision()
 for(int i=0;i<collidingitems.size();i++){
     if(typeid (*(collidingitems[i]))==typeid (Chicken))
    {     delete collidingitems[i];
-                    lives--;
+                   lives->decreaseLives();
     }
-if(lives==0)
-   exit(1);//TO DO
-}
+  }
 }
 
 

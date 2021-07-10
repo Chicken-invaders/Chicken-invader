@@ -9,16 +9,17 @@
 #include <Chicken.h>
 #include <QTimer>
 #include <QMessageBox>
+#include "Lives.h"
 
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
-    int lives;
+
     Bullet* bullet;
     QTimer * timer;
 
-public:
+public: Lives * lives;
     SpaceShip();
 public slots:
     void Collision();

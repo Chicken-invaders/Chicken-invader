@@ -37,7 +37,7 @@ heartBack->setPos(2,1030);
 heartIcon=new QGraphicsPixmapItem();
 heartIcon->setPixmap(QPixmap(":/ images/heart.png"));
 scene->addItem(heartIcon);
-heartIcon->setPos(150,1030);
+heartIcon->setPos(150,1035);
 
 
 //fix size
@@ -46,18 +46,20 @@ setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 //set score
-
-
 vtimer = new QTimer();
 connect(vtimer , SIGNAL(timeout()) , this , SLOT(schedule()));
 vtimer->start(1000);
 
+addSpaceShip();
+
+scene->addItem(spaceship->lives);
+spaceship->lives->setPos(110,1033);
 
 auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
 
- addSpaceShip();
+
 
  score = new Score();
  scene->addItem(score);
@@ -118,6 +120,7 @@ void View::schedule()
        addChicken(20);
        else if (level == 2){
        addChicken(36);
+       chickens.clear();
        flag = false;
        }
    }
