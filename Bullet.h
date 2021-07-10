@@ -2,6 +2,7 @@
 #define BULLET_H
 #include <QGraphicsPixmapItem>
 #include <QTimer>
+#include <Chicken.h>
 
 class Bullet:  public QObject , public QGraphicsPixmapItem
 {
@@ -11,6 +12,7 @@ public:
     Bullet();
 
     QTimer* timer;
+   void collision();
 
  public slots:
     void moveUp();
