@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QGraphicsView>
 #include <QTimer>
-#include "Chicken.h"
+#include "Hen.h"
 #include "Spaceship.h"
 #include <QCursor>
 #include <QMediaPlayer>
@@ -25,7 +25,6 @@ private:
     friend class Egg;
     friend class Chicken;
     QTimer * vtimer;
-    bool flag;
     int sec;
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
@@ -37,19 +36,28 @@ private:
     Bullet * bullet;
     Score * score;
     Egg * egg;
- int rvalue;
+    int rvalue;
+    int row;
+    int col;
+    int pos_x;
+    int endLevelSecond;
+    int currentLevel;
 
 
-
-public: QList<QGraphicsItem *> deltedObjects;
-      int level;
-      explicit View();
+       public:
+       QList<QGraphicsItem *> deltedObjects;
+       explicit View();
        ~View();
        void addChicken(int index);
        void mouseMoveEvent(QMouseEvent * event);
        void addBullet();
        void addSpaceShip();
        void keyPressEvent(QKeyEvent *);
+       void level_1();
+       void level_2();
+       void level_3();
+       void level_4();
+
 
 public slots:
 void schedule();

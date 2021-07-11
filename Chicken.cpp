@@ -1,7 +1,7 @@
 #include "Chicken.h"
 #include "View.h"
 extern View *v;
-Chicken::Chicken(int row) : row (row)
+Chicken::Chicken(int row) : row (row) , lives(1)
 {counter = 0;
 counter2=0;
 stopCounter = 0;
@@ -15,11 +15,10 @@ motionTimer->start(90);
 inPlaceMotionTimer = new QTimer();
 connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
 inPlaceMotionTimer->start(200);
-//eggtime = new QTimer();
-//connect(eggtime , SIGNAL(timeout()) , this , SLOT(generateEgg()));
-//eggtime->start(5000);
-
 }
+
+Chicken::~Chicken()
+{}
 
 void Chicken::generateEgg()
 {
@@ -28,14 +27,12 @@ v->scene->addItem(egg);
  egg->setPos(this->x()+50,this->y()+90);
  egg->moveDown();
 }
-
 void Chicken::moveDown()
 {
-    moveBy(0 , (row+1) * 5);
+    moveBy(0 ,(row+1) * 5);
     stopCounter++;
     if(stopCounter == 30){
           disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-
    }
 }
 void Chicken::motionWings()

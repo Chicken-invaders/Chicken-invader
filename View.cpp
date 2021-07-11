@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , level(1) , flag(true)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0)
 {
     QCursor cursor(Qt::BlankCursor);
         setCursor(cursor);
@@ -77,21 +77,22 @@ View::~View()
 }
 
 
-void View::addChicken(int index)
+void View::addChicken(int numberOfChickens)
 {
-    int col;
-    int pos_x;
-    if(level == 1){
-        col =5;
-    }else if(level == 2){
-        col = 9;
-    }
-    pos_x =960 - ((col/2) * 150 + 50);
-    for(int i = 0 ; i < index ; i++){
-   chickens.push_back(new Chicken((i / col)));
+   for(int i = 0 ; i < numberOfChickens ; i++){
+       if(currentLevel < 3){
+          chickens.push_back(new Chicken((i / col)));
+       }
+       else if (currentLevel > 2){
+           if(i % 2 == 0)
+          chickens.push_back(new Chicken((i / col)));
+          else
+          chickens.push_back(new Hen((i / col)));
+       }
+
    scene->addItem(chickens.last());
-   chickens.last()->setPos(pos_x + (i % col)*150 ,-90);
-    }
+   chickens.last()->setPos(pos_x + (i % col)*140 ,-90);
+   }
 }
 void View::mouseMoveEvent(QMouseEvent * event)
 {
@@ -119,32 +120,60 @@ void View::keyPressEvent(QKeyEvent* click)
 
 }
 
+void View::level_1()
+{
+    row = 4;
+    col = 5;
+    pos_x =960 - ((col/2) * 140 + 50);
+    addChicken(row * col);
+}
+
+void View::level_2()
+{
+    row = 4;
+    col = 9;
+    pos_x =960 - ((col/2) * 140 + 50);
+     addChicken(row * col);
+}
+
+void View::level_3()
+{
+    row = 3;
+    col = 8;
+    pos_x =960 - ((col/2 - 1) * 140 + 120);
+    addChicken(row * col);
+}
+
+void View::level_4()
+{
+    row = 3;
+    col = 10;
+    pos_x =960 - ((col/2 - 1) * 140 + 120);
+    addChicken(row * col);
+}
+
 void View::schedule()
 {
     sec ++;
-   if((sec == 4 || level == 2) && flag){
+   if(sec == 4){
+       level_1();
+       currentLevel = 1;
+   }else if(currentLevel == 1 && chickens.size() == 0){
+       currentLevel = 2;
+       level_2();
+   }else if(currentLevel == 2 && chickens.size() == 0){
+        currentLevel = 3;
+        level_3();
 
-       if(level == 1)
-       addChicken(20);
-       else if (level == 2){
-       addChicken(36);
-
-       flag = false;
-       }
+   }else if(currentLevel == 3 && chickens.size() == 0){
+        currentLevel = 4;
+        level_4();
    }
-   if(chickens.size()==0&& sec>4){
-       level = 2;
-   }
-   if(sec %5==0 && level==1)
-   {
-for(int i =0;i<chickens.size()/4;i++){
 
-
+   if(sec % 5 == 0 && sec > 6)
+   for(int i =0;i<chickens.size()/4;i++){
            QRandomGenerator *gen6 = QRandomGenerator::system();
-              rvalue=gen6->bounded(chickens.size());
-
-              chickens[rvalue]->generateEgg();
-}
-
-   }
+           rvalue=gen6->bounded(chickens.size());
+           chickens[rvalue]->generateEgg();
+    }
 }
