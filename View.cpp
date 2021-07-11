@@ -154,16 +154,33 @@ void View::level_4()
 
 void View::schedule()
 {
+
     sec ++;
    if(sec == 4){
        level_1();
        currentLevel = 1;
+       meatIcon=new QGraphicsPixmapItem();
+       meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
+       scene->addItem(meatIcon);
+       meatIcon->setPos(60 ,1035);
+       nom=new Score();
+       scene->addItem(nom);
+       nom->setPos(20 ,1032);
    }else if(currentLevel == 1 && chickens.size() == 0){
        currentLevel = 2;
        level_2();
+
    }else if(currentLevel == 2 && chickens.size() == 0){
         currentLevel = 3;
         level_3();
+        meatIcon=new QGraphicsPixmapItem();
+        meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
+        scene->addItem(meatIcon);
+        meatIcon->setPos(60 ,1035);
+        nom=new Score();
+        scene->addItem(nom);
+        nom->setPos(20 ,1032);
+
 
    }else if(currentLevel == 3 && chickens.size() == 0){
         currentLevel = 4;

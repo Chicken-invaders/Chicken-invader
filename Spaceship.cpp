@@ -21,6 +21,11 @@ for(int i=0;i<collidingitems.size();i++){
         delete collidingitems[i];
         lives->decreaseLives();
         v->score->increase(10);
+    }else if(typeid (*(collidingitems[i]))==typeid (Meat)){
+        delete collidingitems[i];
+        v->nom->increase(1);
+
+
     }
     return;
   }

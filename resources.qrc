@@ -16,6 +16,7 @@
         <file>hen2.png</file>
         <file>fEgg.png</file>
         <file>meat.png</file>
+        <file>meaticon.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>

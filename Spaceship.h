@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include "Lives.h"
+#include "Meat.h"
 
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
@@ -18,6 +19,7 @@ private:
 
     Bullet* bullet;
     QTimer * timer;
+
 
 public: Lives * lives;
     SpaceShip();

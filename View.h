@@ -26,6 +26,7 @@ private:
     friend class Egg;
     friend class Chicken;
     friend class Meat;
+    friend class Score;
     QTimer * vtimer;
     int sec;
     QGraphicsScene * scene;
@@ -37,8 +38,10 @@ private:
     SpaceShip * spaceship;
     Bullet * bullet;
     Score * score;
+    Score * nom;//numberOfMeats
     Egg * egg;
     Meat* meat;
+    QGraphicsPixmapItem * meatIcon;
     int rvalue;
     int row;
     int col;
