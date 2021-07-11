@@ -18,7 +18,7 @@ void Bullet::collision()
 {
     QList<QGraphicsItem *> collidingitems = collidingItems();
 for(int i=0;i<collidingitems.size();i++){
-    if(typeid (*(collidingitems[i]))==typeid (Chicken))
+    if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen))
     {
         for(int j=0;j<v->chickens.size();j++){
             if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))

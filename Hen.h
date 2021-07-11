@@ -8,6 +8,7 @@ public:
     explicit Hen(int row);
 public slots:
     virtual void motionWings();
+    virtual void moveDown();
 
 };
 

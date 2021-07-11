@@ -26,11 +26,10 @@ v->scene->addItem(egg);
 }
 void Chicken::moveDown()
 {
-    moveBy(0 , (row+1) * 5);
+    moveBy(0 ,(row+1) * 5);
     stopCounter++;
     if(stopCounter == 30){
           disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-
    }
 }
 void Chicken::motionWings()

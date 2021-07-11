@@ -6,16 +6,16 @@ Hen::Hen(int row) : Chicken(row)
     this->counter = 0;
     this->counter2=0;
     this->stopCounter = 0;
-    moveTimer = new QTimer();
-    connect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-    moveTimer->start(50);
-    motionTimer = new QTimer();
-    connect(motionTimer , SIGNAL(timeout()) , this , SLOT(motionWings()));
-    motionTimer->start(90);
+//    moveTimer = new QTimer();
+//    connect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
+//    moveTimer->start(50);
+//    motionTimer = new QTimer();
+//    connect(motionTimer , SIGNAL(timeout()) , this , SLOT(motionWings()));
+//    motionTimer->start(90);
 
-    inPlaceMotionTimer = new QTimer();
-    connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
-    inPlaceMotionTimer->start(200);
+//    inPlaceMotionTimer = new QTimer();
+//    connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
+//    inPlaceMotionTimer->start(200);
 }
 
 void Hen::motionWings()
@@ -28,5 +28,15 @@ void Hen::motionWings()
     else  if(counter % 4 == 2)
     setPixmap(QPixmap(":/ images/hen2.png"));
     else  if(counter % 4 == 3)
-    setPixmap(QPixmap(":/ images/hen1.png"));
+        setPixmap(QPixmap(":/ images/hen1.png"));
+}
+
+void Hen::moveDown()
+{
+    moveBy(0 , (row+1) * 5);
+    stopCounter++;
+    if(stopCounter == 30){
+          disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
+
+   }
 }
