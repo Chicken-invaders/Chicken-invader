@@ -1,4 +1,4 @@
-#ifndef EGG_H
+﻿#ifndef EGG_H
 #define EGG_H
 #include <QObject>
 #include <QGraphicsPixmapItem>
@@ -10,13 +10,15 @@ Q_OBJECT
 
 private:
     QTimer *timer;
+    int convertedEggTime;
 public:
-    Egg();
+      Egg();
     ~Egg();
 
 
 public slots:
     void moveDown();
+void deletefEgg();
 
 };
 

@@ -6,7 +6,7 @@ Hen::Hen(int row) : Chicken(row)
     this->counter = 0;
     this->counter2=0;
     this->stopCounter = 0;
-    qDebug() << lives;
+//    qDebug() << lives;
 }
 
 void Hen::motionWings()

@@ -8,6 +8,7 @@ class Chicken : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
     friend class Bullet;
+    friend class View;
     protected:
     int lives;
     int row;

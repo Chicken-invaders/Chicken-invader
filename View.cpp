@@ -64,7 +64,7 @@ musicPlayer->play();
  score = new Score();
  scene->addItem(score);
  score->setPos(50 ,2);
- //egg part
+
 
 
 
@@ -175,5 +175,6 @@ void View::schedule()
            QRandomGenerator *gen6 = QRandomGenerator::system();
            rvalue=gen6->bounded(chickens.size());
            chickens[rvalue]->generateEgg();
+
     }
 }

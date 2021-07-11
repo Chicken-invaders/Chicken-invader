@@ -3,10 +3,15 @@
 extern View * v;
 Egg::Egg()
 {
-    setPixmap(QPixmap(":/ images/egg2.png"));
+
 timer=new QTimer();
 connect(timer , SIGNAL(timeout()) , this , SLOT(moveDown()));
 timer->start(50);
+
+QTimer *time=new QTimer();
+connect(timer , SIGNAL(timeout()) , this , SLOT(deletefEgg()));
+time->start(20);
+
 //generateEgg();
 
 }
@@ -18,7 +23,28 @@ Egg::~Egg()
 
 void Egg::moveDown()
 {
-    moveBy(0,+27);
+    if(this->y()<1000)
+    {  setPixmap(QPixmap(":/ images/egg2.png"));
+
+      moveBy(0,+27);
+
+    }
+    else
+    {
+        disconnect(timer , SIGNAL(timeout()) , this , SLOT(moveDown()));
+          convertedEggTime=v->sec;
+        setPixmap(QPixmap(":/ images/fEgg.png"));
+    }
+
+
+
   if(y()>1080)
-    delete this;
+      delete this;
 }
+
+void Egg::deletefEgg()
+{
+    if(convertedEggTime+1==v->sec)
+        delete this;
+}
+
