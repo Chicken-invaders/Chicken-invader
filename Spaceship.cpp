@@ -12,7 +12,7 @@ void SpaceShip::Collision()
 {
     QList<QGraphicsItem *> collidingitems= collidingItems();
 for(int i=0;i<collidingitems.size();i++){
-    if(typeid (*(collidingitems[i]))==typeid (Chicken))
+    if(typeid (*(collidingitems[i]))==typeid (Chicken)||typeid (*(collidingitems[i]))==typeid (Egg))
    {     delete collidingitems[i];
                    lives->decreaseLives();
                  v->score->increase(5);
