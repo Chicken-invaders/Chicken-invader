@@ -29,7 +29,7 @@ void Bullet::collision()
                     if(typeid (*(collidingitems[i]))==typeid (Chicken))
                     v->score->increase(5);
                     else v->score->increase(10);
-                    v->chickens[j]->generateMeat();
+                    v->meat->generateMeat(v->chickens[j]->x()+50,v->chickens[j]->y()+40);
                     v->chickens.remove(j);
                     delete collidingitems[i];
                 }delete this;

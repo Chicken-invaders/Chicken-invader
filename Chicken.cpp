@@ -18,7 +18,8 @@ inPlaceMotionTimer->start(200);
 }
 
 Chicken::~Chicken()
-{}
+{
+}
 
 void Chicken::generateEgg()
 {
@@ -31,9 +32,9 @@ v->scene->addItem(egg);
 
 void Chicken::generateMeat()
 {
-    meat=new Meat;
-v->scene->addItem(meat);
- meat->setPos(this->x()+50,this->y()+90);
+        meat=new Meat;
+        v->scene->addItem(meat);
+        meat->setPos(this->x()+50,this->y()+90);
 }
 void Chicken::moveDown()
 {
