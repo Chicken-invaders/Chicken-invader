@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QGraphicsView>
 #include <QTimer>
-#include "Chicken.h"
+#include "Hen.h"
 #include "Spaceship.h"
 #include <QCursor>
 #include <QMediaPlayer>

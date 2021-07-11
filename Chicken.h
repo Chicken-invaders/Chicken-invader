@@ -7,8 +7,8 @@
 class Chicken : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
-
-private:
+    friend class Bullet;
+    protected:
     int lives;
     int row;
     int counter;
@@ -22,13 +22,13 @@ private:
 
 
 public:
-    Chicken(int row);
+ Chicken(int row);
  void generateEgg();
 
 public slots:
-    void moveDown();
-    void motionWings();
-    void inPlaceMotion();
+    virtual void moveDown();
+    virtual void motionWings();
+    virtual void inPlaceMotion();
 };
 
 #endif // CHICKEN_H

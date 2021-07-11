@@ -88,7 +88,13 @@ void View::addChicken(int index)
     }
     pos_x =960 - ((col/2) * 150 + 50);
     for(int i = 0 ; i < index ; i++){
-   chickens.push_back(new Chicken((i / col)));
+        if(i % 2 ==0){
+            chickens.push_back(new Chicken((i / col)));
+
+        }else
+        {
+            chickens.push_back(new Hen((i / col)));
+        }
    scene->addItem(chickens.last());
    chickens.last()->setPos(pos_x + (i % col)*150 ,-90);
     }
@@ -97,8 +103,6 @@ void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
-
-
 }
 
 void View::addSpaceShip()
