@@ -6,16 +6,6 @@ Hen::Hen(int row) : Chicken(row)
     this->counter = 0;
     this->counter2=0;
     this->stopCounter = 0;
-//    moveTimer = new QTimer();
-//    connect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-//    moveTimer->start(50);
-//    motionTimer = new QTimer();
-//    connect(motionTimer , SIGNAL(timeout()) , this , SLOT(motionWings()));
-//    motionTimer->start(90);
-
-//    inPlaceMotionTimer = new QTimer();
-//    connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
-//    inPlaceMotionTimer->start(200);
 }
 
 void Hen::motionWings()

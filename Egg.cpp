@@ -11,17 +11,14 @@ timer->start(50);
 
 }
 
-//void Egg::generateEgg()
-//{ int rvalue;
-//    QRandomGenerator *gen6 = QRandomGenerator::system();
-//       rvalue=gen6->bounded(20);
+Egg::~Egg()
+{
 
-//       setPos(v->chickens[rvalue]->x()+50,v->chickens[rvalue]->y()+90);
-//}
+}
 
 void Egg::moveDown()
 {
     moveBy(0,+27);
-if(y()>1080)
+  if(y()>1080)
     delete this;
 }

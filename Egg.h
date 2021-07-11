@@ -12,6 +12,7 @@ private:
     QTimer *timer;
 public:
     Egg();
+    ~Egg();
 
 
 public slots:

@@ -17,6 +17,9 @@ connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
 inPlaceMotionTimer->start(200);
 }
 
+Chicken::~Chicken()
+{}
+
 void Chicken::generateEgg()
 {
     egg=new Egg;

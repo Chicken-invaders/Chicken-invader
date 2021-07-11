@@ -23,6 +23,7 @@ class Chicken : public QObject , public QGraphicsPixmapItem
 
 public:
  Chicken(int row);
+ ~Chicken();
  void generateEgg();
 
 public slots:
