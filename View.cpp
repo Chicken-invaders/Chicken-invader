@@ -54,16 +54,21 @@ addSpaceShip();
 
 scene->addItem(spaceship->lives);
 spaceship->lives->setPos(110,1033);
-
+//music
 auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
 musicPlayer->play();
 
 
-
+//score part
  score = new Score();
  scene->addItem(score);
  score->setPos(50 ,2);
+ //egg part
+
+
+
+
 }
 
 View::~View()
@@ -127,4 +132,10 @@ void View::schedule()
    if(score->scores == 100){
        level = 2;
    }
+   if(sec %5==0 && level==1)
+   {
+for(int i =0;i<chickens.size()/4;i++){
+       egg=new Egg();
+       scene->addItem(egg);
+   }}
 }

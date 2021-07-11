@@ -1,5 +1,6 @@
 #include "Spaceship.h"
-
+#include "View.h"
+extern View * v;
 SpaceShip::SpaceShip()
 {
    lives = new Lives();
@@ -14,6 +15,7 @@ for(int i=0;i<collidingitems.size();i++){
     if(typeid (*(collidingitems[i]))==typeid (Chicken))
    {     delete collidingitems[i];
                    lives->decreaseLives();
+                 v->score->increase(5);
     }
   }
 }

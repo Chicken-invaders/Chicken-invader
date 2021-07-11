@@ -19,6 +19,7 @@ private:
 
 public:
     Chicken(int row);
+
 public slots:
     void moveDown();
     void motionWings();

@@ -11,6 +11,8 @@
 #include "Bullet.h"
 #include "Score.h"
 #include <QKeyEvent>
+#include "Egg.h"
+
 
 class View : public QGraphicsView
 {
@@ -18,6 +20,8 @@ class View : public QGraphicsView
     Q_OBJECT
 private:
     friend class Bullet;
+    friend class SpaceShip;
+    friend class Egg;
     QTimer * vtimer;
     bool flag;
     int sec;
@@ -30,6 +34,9 @@ private:
     SpaceShip * spaceship;
     Bullet * bullet;
     Score * score;
+    Egg * egg;
+
+
 
 
 public: QList<QGraphicsItem *> deltedObjects;

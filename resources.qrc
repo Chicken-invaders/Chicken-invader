@@ -10,6 +10,7 @@
         <file>spaceshipp.png</file>
         <file>bullet.png</file>
         <file>bullet2.png</file>
+        <file>egg2.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>
