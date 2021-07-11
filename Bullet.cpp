@@ -20,8 +20,15 @@ void Bullet::collision()
 for(int i=0;i<collidingitems.size();i++){
     if(typeid (*(collidingitems[i]))==typeid (Chicken))
     {
-        delete collidingitems[i];
-        collidingitems[i] = nullptr;
+        for(int j=0;j<v->chickens.size();j++){
+            if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
+            { delete collidingitems[i];
+                v->chickens.remove(j);
+                break;
+            }
+        }
+
+
         v->score->increase(5);
         delete this;
     }

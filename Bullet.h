@@ -3,6 +3,7 @@
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 #include <Chicken.h>
+#include <QList>
 
 
 class Bullet:  public QObject , public QGraphicsPixmapItem
@@ -12,6 +13,7 @@ class Bullet:  public QObject , public QGraphicsPixmapItem
     Bullet();
     QTimer* timer;
     void collision();
+
  public slots:
     void moveUp();
 

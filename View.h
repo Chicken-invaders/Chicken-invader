@@ -11,6 +11,7 @@
 #include "Bullet.h"
 #include "Score.h"
 #include <QKeyEvent>
+#include <QRandomGenerator64>
 #include "Egg.h"
 
 
@@ -22,6 +23,7 @@ private:
     friend class Bullet;
     friend class SpaceShip;
     friend class Egg;
+    friend class Chicken;
     QTimer * vtimer;
     bool flag;
     int sec;
@@ -35,7 +37,7 @@ private:
     Bullet * bullet;
     Score * score;
     Egg * egg;
-
+ int rvalue;
 
 
 

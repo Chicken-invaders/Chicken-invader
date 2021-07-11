@@ -97,6 +97,8 @@ void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
+
+
 }
 
 void View::addSpaceShip()
@@ -121,21 +123,28 @@ void View::schedule()
 {
     sec ++;
    if((sec == 4 || level == 2) && flag){
+
        if(level == 1)
        addChicken(20);
        else if (level == 2){
        addChicken(36);
-       chickens.clear();
+
        flag = false;
        }
    }
-   if(score->scores == 100){
+   if(chickens.size()==0&& sec>4){
        level = 2;
    }
-   if(sec %5==0 && level==1)
+   if(sec %5==0 && level==2)
    {
 for(int i =0;i<chickens.size()/4;i++){
-       egg=new Egg();
-       scene->addItem(egg);
-   }}
+
+
+           QRandomGenerator *gen6 = QRandomGenerator::system();
+              rvalue=gen6->bounded(chickens.size());
+
+              chickens[rvalue]->generateEgg();
+}
+
+   }
 }

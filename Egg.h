@@ -12,7 +12,7 @@ private:
     QTimer *timer;
 public:
     Egg();
-    void generateEgg();
+
 
 public slots:
     void moveDown();

@@ -1,5 +1,6 @@
 #include "Chicken.h"
-
+#include "View.h"
+extern View *v;
 Chicken::Chicken(int row) : row (row)
 {counter = 0;
 counter2=0;
@@ -14,6 +15,18 @@ motionTimer->start(90);
 inPlaceMotionTimer = new QTimer();
 connect(inPlaceMotionTimer , SIGNAL(timeout()) , this , SLOT(inPlaceMotion()));
 inPlaceMotionTimer->start(200);
+//eggtime = new QTimer();
+//connect(eggtime , SIGNAL(timeout()) , this , SLOT(generateEgg()));
+//eggtime->start(5000);
+
+}
+
+void Chicken::generateEgg()
+{
+    egg=new Egg;
+v->scene->addItem(egg);
+ egg->setPos(this->x()+50,this->y()+90);
+ egg->moveDown();
 }
 
 void Chicken::moveDown()
