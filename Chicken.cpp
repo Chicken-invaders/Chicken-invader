@@ -28,6 +28,13 @@ v->scene->addItem(egg);
 // egg->moveDown();
 
 }
+
+void Chicken::generateMeat()
+{
+    meat=new Meat;
+v->scene->addItem(meat);
+ meat->setPos(this->x()+50,this->y()+90);
+}
 void Chicken::moveDown()
 {
     moveBy(0 ,(row+1) * 5);
