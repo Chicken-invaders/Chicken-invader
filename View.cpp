@@ -135,7 +135,7 @@ void View::schedule()
    if(chickens.size()==0&& sec>4){
        level = 2;
    }
-   if(sec %5==0 && level==2)
+   if(sec %5==0 && level==1)
    {
 for(int i =0;i<chickens.size()/4;i++){
 
