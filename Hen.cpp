@@ -1,11 +1,12 @@
 #include "Hen.h"
-
+#include "QDebug"
 Hen::Hen(int row) : Chicken(row)
 {
     this->lives = 2;
     this->counter = 0;
     this->counter2=0;
     this->stopCounter = 0;
+    qDebug() << lives;
 }
 
 void Hen::motionWings()

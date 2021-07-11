@@ -18,25 +18,32 @@ void Bullet::collision()
 {
     QList<QGraphicsItem *> collidingitems = collidingItems();
     for(int i=0;i<collidingitems.size();i++){
-       if(typeid (*(collidingitems[i]))==typeid (Chicken)||typeid (*(collidingitems[i]))==typeid (Egg) || typeid (*(collidingitems[i]))==typeid (Hen))
+       if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen))
        {
         for(int j=0;j<v->chickens.size();j++){
             if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
             {
-                v->chickens.remove(j);
-                break;
+
+                v->chickens[j]->lives--;
+                if( v->chickens[j]->lives == 0){
+                    if(typeid (*(collidingitems[i]))==typeid (Chicken))
+                    v->score->increase(5);
+                    else v->score->increase(10);
+                    v->chickens.remove(j);
+                    delete collidingitems[i];
+                }delete this;
+               return;
             }
+          }
         }
-            delete collidingitems[i];
-
-        v->score->increase(5);
-
-        delete this;
-        return;
-        }
-      }
-  }
-
+       else if(typeid (*(collidingitems[i]))==typeid (Egg)){
+           v->score->increase(5);
+           delete collidingitems[i];
+           delete this;
+           return;
+       }
+    }
+}
 
 void Bullet::moveUp()
 {

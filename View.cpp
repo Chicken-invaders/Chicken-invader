@@ -86,7 +86,7 @@ void View::addChicken(int numberOfChickens)
        else if (currentLevel > 2){
            if(i % 2 == 0)
           chickens.push_back(new Chicken((i / col)));
-           else
+          else
           chickens.push_back(new Hen((i / col)));
        }
 
@@ -172,11 +172,8 @@ void View::schedule()
 
    if(sec % 5 == 0 && sec > 6)
    for(int i =0;i<chickens.size()/4;i++){
-
-
            QRandomGenerator *gen6 = QRandomGenerator::system();
-              rvalue=gen6->bounded(chickens.size());
-
-              chickens[rvalue]->generateEgg();
+           rvalue=gen6->bounded(chickens.size());
+           chickens[rvalue]->generateEgg();
     }
 }
