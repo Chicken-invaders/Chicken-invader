@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
+#include "Egg.h"
 class Chicken : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
@@ -16,9 +17,14 @@ private:
     QTimer * moveTimer;
     QTimer * motionTimer;
     QTimer * inPlaceMotionTimer;
+    Egg * egg;
+    QTimer *eggtime;
+
 
 public:
     Chicken(int row);
+ void generateEgg();
+
 public slots:
     void moveDown();
     void motionWings();

@@ -11,6 +11,9 @@
 #include "Bullet.h"
 #include "Score.h"
 #include <QKeyEvent>
+#include <QRandomGenerator64>
+#include "Egg.h"
+
 
 class View : public QGraphicsView
 {
@@ -18,6 +21,9 @@ class View : public QGraphicsView
     Q_OBJECT
 private:
     friend class Bullet;
+    friend class SpaceShip;
+    friend class Egg;
+    friend class Chicken;
     QTimer * vtimer;
     bool flag;
     int sec;
@@ -30,6 +36,9 @@ private:
     SpaceShip * spaceship;
     Bullet * bullet;
     Score * score;
+    Egg * egg;
+ int rvalue;
+
 
 
 public: QList<QGraphicsItem *> deltedObjects;
