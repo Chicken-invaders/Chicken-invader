@@ -83,11 +83,16 @@ void View::addChicken(int numberOfChickens)
        if(currentLevel < 3){
           chickens.push_back(new Chicken((i / col)));
        }
-       else if (currentLevel > 2){
+       else if (currentLevel < 5){
            if(i % 2 == 0)
           chickens.push_back(new Chicken((i / col)));
           else
           chickens.push_back(new Hen((i / col)));
+       }else{
+           if(i % 2 == 0)
+          chickens.push_back(new Hen((i / col)));
+          else
+          chickens.push_back(new Superhen((i / col)));
        }
 
    scene->addItem(chickens.last());
@@ -123,8 +128,8 @@ void View::keyPressEvent(QKeyEvent* click)
                 scene->addItem(bullet);
                 bullet->setPos(spaceship->x(),spaceship->y());
     }
-
-}}
+  }
+}
 
 void View::level_1()
 {
@@ -158,6 +163,22 @@ void View::level_4()
     addChicken(row * col);
 }
 
+void View::level_5()
+{
+    row = 3;
+    col = 6;
+    pos_x =960 - ((col/2 - 1) * 140 + 120);
+    addChicken(row * col);
+}
+
+void View::level_6()
+{
+    row = 3;
+    col = 9;
+    pos_x =960 - ((col/2 - 1) * 140 + 120);
+    addChicken(row * col);
+}
+
 void View::schedule()
 {
 
@@ -187,17 +208,26 @@ void View::schedule()
         scene->addItem(nom);
         nom->setPos(20 ,1032);
 
-
    }else if(currentLevel == 3 && chickens.size() == 0){
         currentLevel = 4;
         level_4();
-   }
+   }else if(currentLevel == 4 && chickens.size() == 0){
+       currentLevel = 5;
+       level_5();
+  }
+   else if(currentLevel == 5 && chickens.size() == 0){
+          currentLevel = 6;
+          level_6();
+     }
 
-   if(sec % 5 == 0 && sec > 6)
-   for(int i =0;i<chickens.size()/4;i++){
+   if(sec % 5 == 0 &&currentLevel > 2)
+       //random egg generation for 1/4 of hens
+   for(int i =0;i<chickens.size()/8;i++){
            QRandomGenerator *gen6 = QRandomGenerator::system();
            rvalue=gen6->bounded(chickens.size());
-           chickens[rvalue]->generateEgg();
+           //Even indexs are chickens - convert random value to Odd to generate egg for hens
+           if(rvalue % 2 == 0) rvalue++;
+           (chickens[rvalue]->generateEgg());
 
     }
 }

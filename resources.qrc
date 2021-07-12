@@ -17,6 +17,9 @@
         <file>fEgg.png</file>
         <file>meat.png</file>
         <file>meaticon.png</file>
+        <file>superhen0.png</file>
+        <file>superhen1.png</file>
+        <file>superhen2.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>
