@@ -115,7 +115,7 @@ void View::keyPressEvent(QKeyEvent* click)
         bullet=new Bullet();
         scene->addItem(bullet);
         bullet->setPos(spaceship->x()+36,spaceship->y()-36);
-            if(false){//TODO****************************gift
+            if(true){//TODO****************************gift
                 bullet2=new Bullet();
                 scene->addItem(bullet2);
                 bullet2->setPos(spaceship->x()+66,spaceship->y());
