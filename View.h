@@ -37,6 +37,8 @@ private:
     QVector <Chicken *> chickens;
     SpaceShip * spaceship;
     Bullet * bullet;
+//    QVector <Bullet*> doubleBullets;
+    Bullet * bullet2;
     Score * score;
     Score * nom;//numberOfMeats
     Egg * egg;

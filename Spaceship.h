@@ -21,6 +21,7 @@ private:
     QTimer * timer;
 
 
+
 public: Lives * lives;
     SpaceShip();
 public slots:
