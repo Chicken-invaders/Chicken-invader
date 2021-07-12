@@ -27,6 +27,7 @@ private:
     friend class Chicken;
     friend class Meat;
     friend class Score;
+    friend class Hen;
     QTimer * vtimer;
     int sec;
     QGraphicsScene * scene;

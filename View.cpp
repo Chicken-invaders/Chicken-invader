@@ -196,8 +196,8 @@ void View::schedule()
    if(sec % 5 == 0 && sec > 6)
    for(int i =0;i<chickens.size()/4;i++){
            QRandomGenerator *gen6 = QRandomGenerator::system();
-           rvalue=gen6->bounded(chickens.size());
-           chickens[rvalue]->generateEgg();
+           rvalue=gen6->bounded(chickens.size()/2);
+           (chickens[rvalue]->generateEgg());
 
     }
 }
