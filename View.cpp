@@ -193,10 +193,13 @@ void View::schedule()
         level_4();
    }
 
-   if(sec % 5 == 0 && sec > 6)
-   for(int i =0;i<chickens.size()/4;i++){
+   if(sec % 5 == 0 &&currentLevel > 2)
+       //random egg generation for 1/4 of hens
+   for(int i =0;i<chickens.size()/8;i++){
            QRandomGenerator *gen6 = QRandomGenerator::system();
-           rvalue=gen6->bounded(chickens.size()/2);
+           rvalue=gen6->bounded(chickens.size());
+           //Even indexs are chickens - convert random value to Odd to generate egg for hens
+           if(rvalue % 2 == 0) rvalue++;
            (chickens[rvalue]->generateEgg());
 
     }

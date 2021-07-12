@@ -26,6 +26,7 @@ void Bullet::collision()
 
                 v->chickens[j]->lives--;
                 if( v->chickens[j]->lives == 0){
+                    // add 5 score for chicken and add 10 score for hen
                     if(typeid (*(collidingitems[i]))==typeid (Chicken))
                     v->score->increase(5);
                     else v->score->increase(10);
@@ -33,9 +34,15 @@ void Bullet::collision()
                     //if object is Hen generate meat
                     if(typeid (*(collidingitems[i]))==typeid (Hen))
                     v->meat->generateMeat(v->chickens[j]->x()+50,v->chickens[j]->y()+40);
+
+                    //delete object
+                     delete collidingitems[i];
+                    //remove hen or chicken from vector
                     v->chickens.remove(j);
-                    delete collidingitems[i];
-                }delete this;
+
+                }
+                // delete bullet
+                delete this;
                return;
             }
           }
