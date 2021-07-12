@@ -15,6 +15,7 @@ SOURCES += \
     Egg.cpp \
     Hen.cpp \
     Lives.cpp \
+    Meat.cpp \
     Score.cpp \
     Spaceship.cpp \
     View.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     Egg.h \
     Hen.h \
     Lives.h \
+    Meat.h \
     Score.h \
     Spaceship.h \
     View.h

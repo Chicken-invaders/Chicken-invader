@@ -13,6 +13,7 @@
 #include <QKeyEvent>
 #include <QRandomGenerator64>
 #include "Egg.h"
+#include "Meat.h"
 
 
 class View : public QGraphicsView
@@ -24,6 +25,8 @@ private:
     friend class SpaceShip;
     friend class Egg;
     friend class Chicken;
+    friend class Meat;
+    friend class Score;
     QTimer * vtimer;
     int sec;
     QGraphicsScene * scene;
@@ -34,14 +37,21 @@ private:
     QVector <Chicken *> chickens;
     SpaceShip * spaceship;
     Bullet * bullet;
+//    QVector <Bullet*> doubleBullets;
+    Bullet * bullet2;
     Score * score;
+    Score * nom;//numberOfMeats
     Egg * egg;
+    Meat* meat;
+    QGraphicsPixmapItem * meatIcon;
     int rvalue;
     int row;
     int col;
     int pos_x;
     int endLevelSecond;
     int currentLevel;
+
+
 
 
        public:

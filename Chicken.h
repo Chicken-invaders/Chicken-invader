@@ -4,10 +4,12 @@
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 #include "Egg.h"
+#include "Meat.h"
 class Chicken : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
     friend class Bullet;
+    friend class View;
     protected:
     int lives;
     int row;
@@ -19,12 +21,14 @@ class Chicken : public QObject , public QGraphicsPixmapItem
     QTimer * inPlaceMotionTimer;
     Egg * egg;
     QTimer *eggtime;
+    Meat * meat;
 
 
 public:
  Chicken(int row);
  ~Chicken();
  void generateEgg();
+ void generateMeat();
 
 public slots:
     virtual void moveDown();

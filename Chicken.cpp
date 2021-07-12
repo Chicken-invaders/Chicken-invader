@@ -18,14 +18,23 @@ inPlaceMotionTimer->start(200);
 }
 
 Chicken::~Chicken()
-{}
+{
+}
 
 void Chicken::generateEgg()
 {
     egg=new Egg;
 v->scene->addItem(egg);
  egg->setPos(this->x()+50,this->y()+90);
- egg->moveDown();
+// egg->moveDown();
+
+}
+
+void Chicken::generateMeat()
+{
+        meat=new Meat;
+        v->scene->addItem(meat);
+        meat->setPos(this->x()+50,this->y()+90);
 }
 void Chicken::moveDown()
 {
