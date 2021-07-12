@@ -18,6 +18,7 @@ SOURCES += \
     Meat.cpp \
     Score.cpp \
     Spaceship.cpp \
+    Superhen.cpp \
     View.cpp \
     main.cpp
 
@@ -31,6 +32,7 @@ HEADERS += \
     Meat.h \
     Score.h \
     Spaceship.h \
+    Superhen.h \
     View.h
 
 FORMS +=
