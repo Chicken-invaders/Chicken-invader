@@ -1,11 +1,16 @@
-//#ifndef SUPERHEN_H
-//#define SUPERHEN_H
-//#include "Hen.h"
+#ifndef SUPERHEN_H
+#define SUPERHEN_H
+#include "Chicken.h"
 
-//class Superhen : public Hen
-//{
-//public:
-//    Superhen();
-//};
+class Superhen : public Chicken
+{
+public:
+    Superhen(int row);
 
-//#endif // SUPERHEN_H
+
+public slots:
+    virtual void motionWings();
+    virtual void moveDown();
+};
+
+#endif // SUPERHEN_H

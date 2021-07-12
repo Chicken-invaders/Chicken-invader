@@ -14,6 +14,7 @@
 #include <QRandomGenerator64>
 #include "Egg.h"
 #include "Meat.h"
+#include "Superhen.h"
 
 
 class View : public QGraphicsView
@@ -68,6 +69,9 @@ private:
        void level_2();
        void level_3();
        void level_4();
+       void level_5();
+       void level_6();
+
 
 
 public slots:
