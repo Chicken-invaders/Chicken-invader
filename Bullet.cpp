@@ -18,7 +18,7 @@ void Bullet::collision()
 {
     QList<QGraphicsItem *> collidingitems = collidingItems();
     for(int i=0;i<collidingitems.size();i++){
-       if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen))
+       if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen) || typeid (*(collidingitems[i]))==typeid (Superhen))
        {
         for(int j=0;j<v->chickens.size();j++){
             if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
@@ -26,13 +26,16 @@ void Bullet::collision()
 
                 v->chickens[j]->lives--;
                 if( v->chickens[j]->lives == 0){
-                    // add 5 score for chicken and add 10 score for hen
+                    // add 5 score for chicken and add 10 score for hen and 20 score for super hen
                     if(typeid (*(collidingitems[i]))==typeid (Chicken))
                     v->score->increase(5);
-                    else v->score->increase(10);
+                    else if(typeid (*(collidingitems[i]))==typeid (Hen))
+                    v->score->increase(10);
+                    else
+                    v->score->increase(20);
 
-                    //if object is Hen generate meat
-                    if(typeid (*(collidingitems[i]))==typeid (Hen))
+                    //if object is Hen or super hen generate meat
+                    if(typeid (*(collidingitems[i]))==typeid (Hen) || typeid (*(collidingitems[i]))==typeid (Superhen))
                     v->meat->generateMeat(v->chickens[j]->x()+50,v->chickens[j]->y()+40);
 
                     //delete object
