@@ -15,6 +15,7 @@
 #include "Egg.h"
 #include "Meat.h"
 #include "Superhen.h"
+#include "Gift.h"
 
 
 class View : public QGraphicsView
@@ -31,6 +32,7 @@ private:
     friend class Hen;
     QTimer * vtimer;
     int sec;
+    int secsaver;//for stroning time for particular perpose
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
     QGraphicsPixmapItem * scoreBoard;
@@ -45,6 +47,8 @@ private:
     Score * nom;//numberOfMeats
     Egg * egg;
     Meat* meat;
+    Gift* gift;
+    bool isGifted=false;
     QGraphicsPixmapItem * meatIcon;
     int rvalue;
     int row;
