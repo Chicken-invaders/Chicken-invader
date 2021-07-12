@@ -128,8 +128,8 @@ void View::keyPressEvent(QKeyEvent* click)
                 scene->addItem(bullet);
                 bullet->setPos(spaceship->x(),spaceship->y());
     }
-
-}}
+  }
+}
 
 void View::level_1()
 {
@@ -171,6 +171,14 @@ void View::level_5()
     addChicken(row * col);
 }
 
+void View::level_6()
+{
+    row = 3;
+    col = 9;
+    pos_x =960 - ((col/2 - 1) * 140 + 120);
+    addChicken(row * col);
+}
+
 void View::schedule()
 {
 
@@ -207,6 +215,10 @@ void View::schedule()
        currentLevel = 5;
        level_5();
   }
+   else if(currentLevel == 5 && chickens.size() == 0){
+          currentLevel = 6;
+          level_6();
+     }
 
    if(sec % 5 == 0 &&currentLevel > 2)
        //random egg generation for 1/4 of hens
