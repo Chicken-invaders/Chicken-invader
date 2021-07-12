@@ -11,7 +11,7 @@
 #include <QMessageBox>
 #include "Lives.h"
 #include "Meat.h"
-
+#include "Gift.h"
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT

@@ -116,11 +116,12 @@ void View::addSpaceShip()
 void View::keyPressEvent(QKeyEvent* click)
 {
     if(click->key()==Qt::Key_Space)
-    {
-        bullet=new Bullet();
-        scene->addItem(bullet);
-        bullet->setPos(spaceship->x()+36,spaceship->y()-36);
-            if(false){//TODO****************************gift
+    {if(isGifted == false){
+            bullet=new Bullet();
+            scene->addItem(bullet);
+            bullet->setPos(spaceship->x()+36,spaceship->y()-36);
+        }else if(isGifted==true)
+        {
                 bullet2=new Bullet();
                 scene->addItem(bullet2);
                 bullet2->setPos(spaceship->x()+66,spaceship->y());
@@ -186,18 +187,18 @@ void View::schedule()
    if(sec == 4){
        level_1();
        currentLevel = 1;
-       meatIcon=new QGraphicsPixmapItem();
-       meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
-       scene->addItem(meatIcon);
-       meatIcon->setPos(60 ,1035);
-       nom=new Score();
-       scene->addItem(nom);
-       nom->setPos(20 ,1032);
+//       meatIcon=new QGraphicsPixmapItem();
+//       meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
+//       scene->addItem(meatIcon);
+//       meatIcon->setPos(60 ,1035);
+//       nom=new Score();
+//       scene->addItem(nom);
+//       nom->setPos(20 ,1032);
    }else if(currentLevel == 1 && chickens.size() == 0){
        currentLevel = 2;
        level_2();
 
-   }else if(currentLevel == 2 && chickens.size() == 0){
+   }else if(currentLevel == 2 && chickens.size() == 0){//from this stage we can have meat!
         currentLevel = 3;
         level_3();
         meatIcon=new QGraphicsPixmapItem();
@@ -214,20 +215,33 @@ void View::schedule()
    }else if(currentLevel == 4 && chickens.size() == 0){
        currentLevel = 5;
        level_5();
+       secsaver=sec;
+
   }
    else if(currentLevel == 5 && chickens.size() == 0){
           currentLevel = 6;
           level_6();
+          isGifted=false;
      }
 
    if(sec % 5 == 0 &&currentLevel > 2)
        //random egg generation for 1/4 of hens
    for(int i =0;i<chickens.size()/8;i++){
            QRandomGenerator *gen6 = QRandomGenerator::system();
-           rvalue=gen6->bounded(chickens.size());
+           rvalue=gen6->bounded(chickens.size()-1);
            //Even indexs are chickens - convert random value to Odd to generate egg for hens
            if(rvalue % 2 == 0) rvalue++;
            (chickens[rvalue]->generateEgg());
 
     }
+   if(sec-secsaver==15 && currentLevel >4){
+       //generation random pix.x() for the postion of the gift
+        QRandomGenerator *gen5 = QRandomGenerator::system();
+        int random=gen5->bounded(30,1900);
+        gift=new Gift();
+        scene->addItem(gift);
+        gift->setPos(random,0);
+
+
+   }
 }
