@@ -1,22 +1,25 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , currentLevel(0)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false)
 {
-    QCursor cursor(Qt::BlankCursor);
-        setCursor(cursor);
-    setMouseTracking(true);
-    setFocus();
+
+// set cursor invisible
+QCursor cursor(Qt::BlankCursor);
+setCursor(cursor);
+setMouseTracking(true);
+setFocus();
+
+
 //create scene
 scene = new QGraphicsScene();
 scene->setSceneRect(0,0,1920,1080);
 setScene(scene);
-
 setWindowFlags(Qt::Window|Qt::FramelessWindowHint);
+
 
 //set background
 setBackgroundBrush(QBrush(QImage(":/ images/background.jpg")));
-
 
 
 //set score board
@@ -45,15 +48,16 @@ setFixedSize(1920,1080);
 setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-//set score
+//connect schedule slot to timer (run severy 1 sec)
 vtimer = new QTimer();
 connect(vtimer , SIGNAL(timeout()) , this , SLOT(schedule()));
 vtimer->start(1000);
 
+// add spaceship
 addSpaceShip();
-
 scene->addItem(spaceship->lives);
 spaceship->lives->setPos(110,1033);
+
 //music
 auto musicPlayer =new QMediaPlayer();
 musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
@@ -61,14 +65,14 @@ musicPlayer->play();
 
 
 //score part
- score = new Score();
- scene->addItem(score);
- score->setPos(50 ,2);
-
-
-
-
-
+score = new Score();
+scene->addItem(score);
+score->setPos(50 ,2);
+levelstext = new QGraphicsTextItem();
+levelstext->setDefaultTextColor("white");
+levelstext->setFont(QFont("timer" , 50));
+scene->addItem(levelstext);
+levelstext->setPos(650 , 450);
 }
 
 View::~View()
@@ -79,6 +83,7 @@ View::~View()
 
 void View::addChicken(int numberOfChickens)
 {
+    // add type of chickens based on their types
    for(int i = 0 ; i < numberOfChickens ; i++){
        if(currentLevel < 3){
           chickens.push_back(new Chicken((i / col)));
@@ -95,16 +100,17 @@ void View::addChicken(int numberOfChickens)
           chickens.push_back(new Superhen((i / col)));
        }
 
+       // add chickens one by one to the scene
    scene->addItem(chickens.last());
    chickens.last()->setPos(pos_x + (i % col)*140 ,-90);
    }
 }
+
+//link spaceship movment to the cursor
 void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
  spaceship->Collision();
-
-
 }
 
 void View::addSpaceShip()
@@ -113,6 +119,8 @@ void View::addSpaceShip()
     scene->addItem(spaceship);
 }
 
+
+//link shooting bullet to space key
 void View::keyPressEvent(QKeyEvent* click)
 {
     if(click->key()==Qt::Key_Space)
@@ -124,10 +132,10 @@ void View::keyPressEvent(QKeyEvent* click)
         {
                 bullet2=new Bullet();
                 scene->addItem(bullet2);
-                bullet2->setPos(spaceship->x()+66,spaceship->y());
+                bullet2->setPos(spaceship->x()+56,spaceship->y());
                 bullet=new Bullet();
                 scene->addItem(bullet);
-                bullet->setPos(spaceship->x(),spaceship->y());
+                bullet->setPos(spaceship->x()+10,spaceship->y());
     }
   }
 }
@@ -182,23 +190,19 @@ void View::level_6()
 
 void View::schedule()
 {
-
     sec ++;
    if(sec == 4){
        level_1();
        currentLevel = 1;
-//       meatIcon=new QGraphicsPixmapItem();
-//       meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
-//       scene->addItem(meatIcon);
-//       meatIcon->setPos(60 ,1035);
-//       nom=new Score();
-//       scene->addItem(nom);
-//       nom->setPos(20 ,1032);
    }else if(currentLevel == 1 && chickens.size() == 0){
+   if(sec == endLevelSecond+4){
        currentLevel = 2;
        level_2();
-
-   }else if(currentLevel == 2 && chickens.size() == 0){//from this stage we can have meat!
+     }
+   }
+   else if(currentLevel == 2 && chickens.size() == 0){
+        //from this stage we can have meat!
+       if(sec == endLevelSecond+4){
         currentLevel = 3;
         level_3();
         meatIcon=new QGraphicsPixmapItem();
@@ -208,20 +212,29 @@ void View::schedule()
         nom=new Score();
         scene->addItem(nom);
         nom->setPos(20 ,1032);
-
-   }else if(currentLevel == 3 && chickens.size() == 0){
+       }
+   }
+   else if(currentLevel == 3 && chickens.size() == 0){
+       if(sec == endLevelSecond+4){
         currentLevel = 4;
         level_4();
-   }else if(currentLevel == 4 && chickens.size() == 0){
+       }
+   }
+   else if(currentLevel == 4 && chickens.size() == 0){
+if(sec == endLevelSecond+4){
        currentLevel = 5;
        level_5();
-       secsaver=sec;
+       giftSecSaver=sec;
+}
 
   }
    else if(currentLevel == 5 && chickens.size() == 0){
+       if(sec == endLevelSecond+4){
           currentLevel = 6;
           level_6();
           isGifted=false;
+          giftSecSaver=sec;
+       }
      }
 
    if(sec % 5 == 0 &&currentLevel > 2)
@@ -234,7 +247,7 @@ void View::schedule()
            (chickens[rvalue]->generateEgg());
 
     }
-   if(sec-secsaver==15 && currentLevel >4){
+   if(sec-giftSecSaver==15 && currentLevel > 4){
        //generation random pix.x() for the postion of the gift
         QRandomGenerator *gen5 = QRandomGenerator::system();
         int random=gen5->bounded(30,1900);
@@ -245,3 +258,10 @@ void View::schedule()
 
    }
 }
+
+//void View::levelsText(QString string)
+//{
+
+//    levelstext->setPlainText(string);
+
+//}

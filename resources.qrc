@@ -21,6 +21,9 @@
         <file>superhen1.png</file>
         <file>superhen2.png</file>
         <file>gift.png</file>
+        <file>boom0.png</file>
+        <file>boom1.png</file>
+        <file>boom2.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>
