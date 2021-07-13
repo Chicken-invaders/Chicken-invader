@@ -111,7 +111,6 @@ void View::addChicken(int numberOfChickens)
 void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
- spaceship->Collision();
 }
 
 void View::addSpaceShip()
@@ -252,6 +251,7 @@ if(sec == endLevelSecond+4){
           giftSecSaver=sec;
        }
      }
+
    if(sec % 5 == 0)
    randomGenerateEgg();
 

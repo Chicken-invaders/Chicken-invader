@@ -29,6 +29,7 @@ private:
     friend class Meat;
     friend class Score;
     friend class Hen;
+    friend class Menu;
     QTimer * vtimer;
     int sec;
     int giftSecSaver;

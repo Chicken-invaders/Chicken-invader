@@ -66,12 +66,18 @@ Menu::Menu(): QGraphicsView()
                 "padding: 5px;"
 );
 
+    timer = new QTimer();
+    connect(timer , SIGNAL(timeout()) , this , SLOT(checkEnd()));
+
 }
 
 void Menu::playNewGame()
 {
+
     v = new View();
     v->show();
+    this->hide();
+    timer->start(20);
 }
 
 void Menu::exitGame()
@@ -81,5 +87,19 @@ void Menu::exitGame()
 
 void Menu::load()
 {
+
+}
+
+void Menu::checkEnd()
+{
+    if(v->currentLevel == 6 && v->chickens.size() == 0){
+        v->setLevelsText("Great work! you won!");
+        if(v->sec == v->endLevelSecond+4){
+            delete v;
+            this->show();
+           timer->stop();
+        }
+
+    }
 
 }
