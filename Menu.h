@@ -5,17 +5,27 @@
 #include <QGraphicsView>
 #include <QPushButton>
 #include <QGraphicsPixmapItem>
+#include "View.h"
+#include <QPixmap>
+#include <QIcon>
 
 
 
-
-class Menu :public QGraphicsView,public QGraphicsPixmapItem
-{Q_OBJECT
-private:
-    QGraphicsScene * mscene;
+class Menu :public QGraphicsView
+{           Q_OBJECT
+    private:
+    QGraphicsScene * scene;
     QPushButton * newGameButton;
-public:
+    QPushButton * quitButton;
+    QPushButton * cridtButton;
+    QPushButton * loadButton;
+    public:
     Menu();
+
+ public slots:
+       void playNewGame();
+       void exitGame();
+       void load();
 };
 
 #endif // MENU_H
