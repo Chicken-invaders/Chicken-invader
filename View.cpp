@@ -68,6 +68,7 @@ musicPlayer->play();
 score = new Score();
 scene->addItem(score);
 score->setPos(50 ,2);
+
 levelstext = new QGraphicsTextItem();
 levelstext->setDefaultTextColor("white");
 levelstext->setFont(QFont("timer" , 50));
@@ -191,18 +192,26 @@ void View::level_6()
 void View::schedule()
 {
     sec ++;
+    if(sec == 1){
+        levelsText("Season 1 - Level 1:");
+    }
    if(sec == 4){
+       levelsText("");
        level_1();
        currentLevel = 1;
    }else if(currentLevel == 1 && chickens.size() == 0){
+       levelsText("Season 1 - Level 2:");
    if(sec == endLevelSecond+4){
+         levelsText("");
        currentLevel = 2;
        level_2();
      }
    }
    else if(currentLevel == 2 && chickens.size() == 0){
+            levelsText("Season 2 - Level 1:");
         //from this stage we can have meat!
        if(sec == endLevelSecond+4){
+             levelsText("");
         currentLevel = 3;
         level_3();
         meatIcon=new QGraphicsPixmapItem();
@@ -215,13 +224,18 @@ void View::schedule()
        }
    }
    else if(currentLevel == 3 && chickens.size() == 0){
+       levelsText("Season 2 - Level 2:");
        if(sec == endLevelSecond+4){
+             levelsText("");
         currentLevel = 4;
         level_4();
        }
    }
    else if(currentLevel == 4 && chickens.size() == 0){
+       levelsText("Season 3 - Level 1:");
 if(sec == endLevelSecond+4){
+
+      levelsText("");
        currentLevel = 5;
        level_5();
        giftSecSaver=sec;
@@ -229,7 +243,9 @@ if(sec == endLevelSecond+4){
 
   }
    else if(currentLevel == 5 && chickens.size() == 0){
+       levelsText("Season 3 - Level 2:");
        if(sec == endLevelSecond+4){
+             levelsText("");
           currentLevel = 6;
           level_6();
           isGifted=false;
@@ -259,9 +275,9 @@ if(sec == endLevelSecond+4){
    }
 }
 
-//void View::levelsText(QString string)
-//{
+void View::levelsText(QString string)
+{
 
-//    levelstext->setPlainText(string);
+    levelstext->setPlainText(string);
 
-//}
+}

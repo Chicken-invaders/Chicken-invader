@@ -75,7 +75,7 @@ private:
        void level_4();
        void level_5();
        void level_6();
-//       void levelsText(QString string);
+       void levelsText(QString string);
 
 
 

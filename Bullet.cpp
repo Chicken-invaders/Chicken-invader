@@ -60,17 +60,16 @@ void Bullet::collision()
            return;
        }
     }
-
+    if(v->chickens.size() == 0){
+        delete this;
+    }
 }
 
 void Bullet::moveUp()
 {
 moveBy(0,-27);
 collision();
-if(y() < 0){
+if(y() < 4){
     delete this;
-}else if(v->chickens.size() == 0){
-    delete this;
-
 }
 }
