@@ -49,6 +49,7 @@ private:
     Egg * egg;
     Meat* meat;
     Gift* gift;
+    QRandomGenerator *gen6;
     bool isGifted;
     int rvalue;
     int row;
@@ -76,6 +77,7 @@ private:
        void level_5();
        void level_6();
        void levelsText(QString string);
+       void randomGenerateEgg();
 
 
 

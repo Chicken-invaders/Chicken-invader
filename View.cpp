@@ -252,17 +252,9 @@ if(sec == endLevelSecond+4){
           giftSecSaver=sec;
        }
      }
+   if(sec % 5 == 0)
+   randomGenerateEgg();
 
-   if(sec % 5 == 0 &&currentLevel > 2)
-       //random egg generation for 1/4 of hens
-   for(int i =0;i<chickens.size()/8;i++){
-           QRandomGenerator *gen6 = QRandomGenerator::system();
-           rvalue=gen6->bounded(chickens.size()-1);
-           //Even indexs are chickens - convert random value to Odd to generate egg for hens
-           if(rvalue % 2 == 0) rvalue++;
-           (chickens[rvalue]->generateEgg());
-
-    }
    if(sec-giftSecSaver==15 && currentLevel > 4){
        //generation random pix.x() for the postion of the gift
         QRandomGenerator *gen5 = QRandomGenerator::system();
@@ -271,11 +263,31 @@ if(sec == endLevelSecond+4){
         scene->addItem(gift);
         gift->setPos(random,0);
    }
+   qDebug() << giftSecSaver;
 }
 
 void View::levelsText(QString string)
 {
 
     levelstext->setPlainText(string);
+
+}
+
+void View::randomGenerateEgg()
+{
+    if(currentLevel < 5 && currentLevel > 2)
+    for(int i =0;i<chickens.size()/8;i++){
+           gen6 = QRandomGenerator::system();
+            rvalue=gen6->bounded(chickens.size()-1);
+            //Even indexs are chickens - convert random value to Odd to generate egg for hens
+            if(rvalue % 2 == 0) rvalue++;
+            (chickens[rvalue]->generateEgg());
+     }
+    else if(currentLevel > 4)
+        for(int i =0;i<chickens.size()/4;i++){
+                gen6 = QRandomGenerator::system();
+                rvalue=gen6->bounded(chickens.size());
+                (chickens[rvalue]->generateEgg());
+         }
 
 }
