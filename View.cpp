@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0)
 {
 
 // set cursor invisible
@@ -68,6 +68,7 @@ musicPlayer->play();
 score = new Score();
 scene->addItem(score);
 score->setPos(50 ,2);
+
 levelstext = new QGraphicsTextItem();
 levelstext->setDefaultTextColor("white");
 levelstext->setFont(QFont("timer" , 50));
@@ -191,18 +192,26 @@ void View::level_6()
 void View::schedule()
 {
     sec ++;
+    if(sec == 1){
+        levelsText("Season 1 - Level 1:");
+    }
    if(sec == 4){
+       levelsText("");
        level_1();
        currentLevel = 1;
    }else if(currentLevel == 1 && chickens.size() == 0){
+       levelsText("Season 1 - Level 2:");
    if(sec == endLevelSecond+4){
+         levelsText("");
        currentLevel = 2;
        level_2();
      }
    }
    else if(currentLevel == 2 && chickens.size() == 0){
+            levelsText("Season 2 - Level 1:");
         //from this stage we can have meat!
        if(sec == endLevelSecond+4){
+             levelsText("");
         currentLevel = 3;
         level_3();
         meatIcon=new QGraphicsPixmapItem();
@@ -215,13 +224,18 @@ void View::schedule()
        }
    }
    else if(currentLevel == 3 && chickens.size() == 0){
+       levelsText("Season 2 - Level 2:");
        if(sec == endLevelSecond+4){
+             levelsText("");
         currentLevel = 4;
         level_4();
        }
    }
    else if(currentLevel == 4 && chickens.size() == 0){
+       levelsText("Season 3 - Level 1:");
 if(sec == endLevelSecond+4){
+
+      levelsText("");
        currentLevel = 5;
        level_5();
        giftSecSaver=sec;
@@ -229,24 +243,18 @@ if(sec == endLevelSecond+4){
 
   }
    else if(currentLevel == 5 && chickens.size() == 0){
+       levelsText("Season 3 - Level 2:");
        if(sec == endLevelSecond+4){
+          levelsText("");
           currentLevel = 6;
           level_6();
           isGifted=false;
           giftSecSaver=sec;
        }
      }
+   if(sec % 5 == 0)
+   randomGenerateEgg();
 
-   if(sec % 5 == 0 &&currentLevel > 2)
-       //random egg generation for 1/4 of hens
-   for(int i =0;i<chickens.size()/8;i++){
-           QRandomGenerator *gen6 = QRandomGenerator::system();
-           rvalue=gen6->bounded(chickens.size()-1);
-           //Even indexs are chickens - convert random value to Odd to generate egg for hens
-           if(rvalue % 2 == 0) rvalue++;
-           (chickens[rvalue]->generateEgg());
-
-    }
    if(sec-giftSecSaver==15 && currentLevel > 4){
        //generation random pix.x() for the postion of the gift
         QRandomGenerator *gen5 = QRandomGenerator::system();
@@ -254,14 +262,32 @@ if(sec == endLevelSecond+4){
         gift=new Gift();
         scene->addItem(gift);
         gift->setPos(random,0);
-
-
    }
+   qDebug() << giftSecSaver;
 }
 
-//void View::levelsText(QString string)
-//{
+void View::levelsText(QString string)
+{
 
-//    levelstext->setPlainText(string);
+    levelstext->setPlainText(string);
 
-//}
+}
+
+void View::randomGenerateEgg()
+{
+    if(currentLevel < 5 && currentLevel > 2)
+    for(int i =0;i<chickens.size()/8;i++){
+           gen6 = QRandomGenerator::system();
+            rvalue=gen6->bounded(chickens.size()-1);
+            //Even indexs are chickens - convert random value to Odd to generate egg for hens
+            if(rvalue % 2 == 0) rvalue++;
+            (chickens[rvalue]->generateEgg());
+     }
+    else if(currentLevel > 4)
+        for(int i =0;i<chickens.size()/4;i++){
+                gen6 = QRandomGenerator::system();
+                rvalue=gen6->bounded(chickens.size());
+                (chickens[rvalue]->generateEgg());
+         }
+
+}
