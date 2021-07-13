@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0)
 {
 
 // set cursor invisible
@@ -245,7 +245,7 @@ if(sec == endLevelSecond+4){
    else if(currentLevel == 5 && chickens.size() == 0){
        levelsText("Season 3 - Level 2:");
        if(sec == endLevelSecond+4){
-             levelsText("");
+          levelsText("");
           currentLevel = 6;
           level_6();
           isGifted=false;
@@ -270,8 +270,6 @@ if(sec == endLevelSecond+4){
         gift=new Gift();
         scene->addItem(gift);
         gift->setPos(random,0);
-
-
    }
 }
 

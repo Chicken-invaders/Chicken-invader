@@ -60,9 +60,6 @@ void Bullet::collision()
            return;
        }
     }
-    if(v->chickens.size() == 0){
-        delete this;
-    }
 }
 
 void Bullet::moveUp()

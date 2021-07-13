@@ -24,10 +24,13 @@ for(int i=0;i<collidingitems.size();i++){
                 explo->setPos(this->x() , this->y() - 50);
                 lives->decreaseLives();
                 v->score->increase(5);
+                if(v->chickens.size() == 0){
+                    v->endLevelSecond = v->sec;
+                  }
                return;
              }
-            }
-          }
+        }
+    }
     else if( typeid (*(collidingitems[i]))==typeid (Egg)){
         delete collidingitems[i];
         explo = new Explosion();
@@ -47,9 +50,12 @@ for(int i=0;i<collidingitems.size();i++){
                 explo->setPos(this->x() , this->y() - 50);
                 lives->decreaseLives();
                 v->score->increase(10);
+                if(v->chickens.size() == 0){
+                    v->endLevelSecond = v->sec;
+                  }
                return;
              }
-            }
+    }
     }
     else if(typeid (*(collidingitems[i]))==typeid (Superhen)){
          for(int j=0;j<v->chickens.size();j++){
@@ -62,6 +68,9 @@ for(int i=0;i<collidingitems.size();i++){
                  explo->setPos(this->x() , this->y() - 50);
                  lives->decreaseLives();
                  v->score->increase(20);
+                 if(v->chickens.size() == 0){
+                     v->endLevelSecond = v->sec;
+                   }
                 return;
               }
              }
@@ -74,6 +83,7 @@ for(int i=0;i<collidingitems.size();i++){
         v->isGifted=true;
     return;
   }
- }
 }
+}
+
 
