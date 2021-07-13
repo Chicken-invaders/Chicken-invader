@@ -21,6 +21,7 @@
         <file>superhen1.png</file>
         <file>superhen2.png</file>
         <file>gift.png</file>
+        <file>main_menu.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>
