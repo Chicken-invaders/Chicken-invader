@@ -39,7 +39,7 @@ Menu::Menu(): QGraphicsView()
                 "padding: 5px;"
 );
     cridtButton=new QPushButton();
-    cridtButton->setGeometry(690,750,560,80);
+    cridtButton->setGeometry(690,720,560,80);
     scene->addWidget(cridtButton);
 
     connect(cridtButton , SIGNAL(clicked()) , this , SLOT(exitGame()));
@@ -51,7 +51,7 @@ Menu::Menu(): QGraphicsView()
                 "padding: 5px;"
 );
     loadButton=new QPushButton();
-    loadButton->setGeometry(690,625,560,80);
+    loadButton->setGeometry(690,630,560,80);
     scene->addWidget(loadButton);
 
     connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
@@ -59,7 +59,7 @@ Menu::Menu(): QGraphicsView()
      loadButton->setAttribute(Qt::WA_TranslucentBackground);
     loadButton->setFixedSize(QSize(560,80));
     loadButton->setStyleSheet(
-             "border-image: url(:/ images/credits_button.png) 3 3 3 3;"
+             "border-image: url(:/ images/load_button.png) 3 3 3 3;"
                 "padding: 5px;"
 );
 
