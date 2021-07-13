@@ -13,6 +13,7 @@ SOURCES += \
     Chicken.cpp \
     Controller.cpp \
     Egg.cpp \
+    Explosion.cpp \
     Gift.cpp \
     Hen.cpp \
     Lives.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     Chicken.h \
     Controller.h \
     Egg.h \
+    Explosion.h \
     Gift.h \
     Hen.h \
     Lives.h \

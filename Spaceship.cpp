@@ -12,18 +12,69 @@ void SpaceShip::Collision()
 {
     QList<QGraphicsItem *> collidingitems= collidingItems();
 for(int i=0;i<collidingitems.size();i++){
-    if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Egg))
+    if(typeid (*(collidingitems[i]))==typeid (Chicken))
     {//check whether the spaceship has collision with chickens or eggs
-         delete collidingitems[i];
-         lives->decreaseLives();
-         v->score->increase(5);
-
-    }else if(typeid (*(collidingitems[i]))==typeid (Hen)){
-        delete collidingitems[i];//check whether the spaceship has collision with hen or not
+        for(int j=0;j<v->chickens.size();j++){
+            if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
+            {
+                delete collidingitems[i];
+                v->chickens.remove(j);
+                explo = new Explosion();
+                v->scene->addItem(explo);
+                explo->setPos(this->x() , this->y() - 50);
+                lives->decreaseLives();
+                v->score->increase(5);
+                if(v->chickens.size() == 0){
+                    v->endLevelSecond = v->sec;
+                  }
+               return;
+             }
+        }
+    }
+    else if( typeid (*(collidingitems[i]))==typeid (Egg)){
+        delete collidingitems[i];
+        explo = new Explosion();
+        v->scene->addItem(explo);
+        explo->setPos(this->x() , this->y() - 50);
         lives->decreaseLives();
-        v->score->increase(10);
-
-    }else if(typeid (*(collidingitems[i]))==typeid (Meat)){
+       return;
+    }
+   else if(typeid (*(collidingitems[i]))==typeid (Hen)){
+        for(int j=0;j<v->chickens.size();j++){
+            if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
+            {
+                delete collidingitems[i];
+                v->chickens.remove(j);
+                explo = new Explosion();
+                v->scene->addItem(explo);
+                explo->setPos(this->x() , this->y() - 50);
+                lives->decreaseLives();
+                v->score->increase(10);
+                if(v->chickens.size() == 0){
+                    v->endLevelSecond = v->sec;
+                  }
+               return;
+             }
+    }
+    }
+    else if(typeid (*(collidingitems[i]))==typeid (Superhen)){
+         for(int j=0;j<v->chickens.size();j++){
+             if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
+             {
+                 delete collidingitems[i];
+                 v->chickens.remove(j);
+                 explo = new Explosion();
+                 v->scene->addItem(explo);
+                 explo->setPos(this->x() , this->y() - 50);
+                 lives->decreaseLives();
+                 v->score->increase(20);
+                 if(v->chickens.size() == 0){
+                     v->endLevelSecond = v->sec;
+                   }
+                return;
+              }
+             }
+     }else if(typeid (*(collidingitems[i]))==typeid (Meat)){
         delete collidingitems[i];//check whether the spaceship has recevied the meat or not
         v->nom->increase(1);
 
@@ -32,7 +83,7 @@ for(int i=0;i<collidingitems.size();i++){
         v->isGifted=true;
     return;
   }
-}}
-
+}
+}
 
 

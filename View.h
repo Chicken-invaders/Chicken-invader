@@ -4,19 +4,18 @@
 #include <QObject>
 #include <QGraphicsView>
 #include <QTimer>
-#include "Hen.h"
-#include "Spaceship.h"
 #include <QCursor>
 #include <QMediaPlayer>
-#include "Bullet.h"
-#include "Score.h"
 #include <QKeyEvent>
 #include <QRandomGenerator64>
 #include "Egg.h"
 #include "Meat.h"
 #include "Superhen.h"
 #include "Gift.h"
-
+#include "Bullet.h"
+#include "Score.h"
+#include "Hen.h"
+#include "Spaceship.h"
 
 class View : public QGraphicsView
 {
@@ -32,24 +31,26 @@ private:
     friend class Hen;
     QTimer * vtimer;
     int sec;
-    int secsaver;//for stroning time for particular perpose
+    int giftSecSaver;
+    int changeLevelSec;
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
     QGraphicsPixmapItem * scoreBoard;
     QGraphicsPixmapItem * heartIcon;
     QGraphicsPixmapItem * heartBack;
+    QGraphicsPixmapItem * meatIcon;
+    QGraphicsTextItem * levelstext;
     QVector <Chicken *> chickens;
     SpaceShip * spaceship;
     Bullet * bullet;
-//    QVector <Bullet*> doubleBullets;
     Bullet * bullet2;
     Score * score;
-    Score * nom;//numberOfMeats
+    Score * nom; //numberOfMeats
     Egg * egg;
     Meat* meat;
     Gift* gift;
-    bool isGifted=false;
-    QGraphicsPixmapItem * meatIcon;
+    QRandomGenerator *gen6;
+    bool isGifted;
     int rvalue;
     int row;
     int col;
@@ -75,6 +76,8 @@ private:
        void level_4();
        void level_5();
        void level_6();
+       void levelsText(QString string);
+       void randomGenerateEgg();
 
 
 

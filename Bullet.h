@@ -2,7 +2,6 @@
 #define BULLET_H
 #include <QGraphicsPixmapItem>
 #include <QTimer>
-#include <Chicken.h>
 #include <QList>
 
 
