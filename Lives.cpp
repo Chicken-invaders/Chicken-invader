@@ -1,6 +1,6 @@
 #include "Lives.h"
 #include <QFont>
-Lives::Lives() :  QGraphicsTextItem()  , lives(3)
+Lives::Lives() :  QGraphicsTextItem()  , lives(50)
 {
        setPlainText(QString::number(lives));
        setDefaultTextColor("white");

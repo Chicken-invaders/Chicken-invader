@@ -12,11 +12,13 @@
 #include "Lives.h"
 #include "Meat.h"
 #include "Gift.h"
+#include "Explosion.h"
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
 
+    Explosion * explo;
     Bullet* bullet;
     QTimer * timer;
 

@@ -16,6 +16,7 @@ timer->start(50);
 
 void Bullet::collision()
 {
+
     QList<QGraphicsItem *> collidingitems = collidingItems();
     for(int i=0;i<collidingitems.size();i++){
        if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen) || typeid (*(collidingitems[i]))==typeid (Superhen))
@@ -42,14 +43,16 @@ void Bullet::collision()
                      delete collidingitems[i];
                     //remove hen or chicken from vector
                     v->chickens.remove(j);
-
-                }
+              if(v->chickens.size() == 0){
+              v->endLevelSecond = v->sec;
+               }
+             }
                 // delete bullet
                 delete this;
                return;
-            }
-          }
-        }
+           }
+         }
+       }
        else if(typeid (*(collidingitems[i]))==typeid (Egg)){
            v->score->increase(5);
            delete collidingitems[i];
@@ -57,6 +60,7 @@ void Bullet::collision()
            return;
        }
     }
+
 }
 
 void Bullet::moveUp()
@@ -65,5 +69,8 @@ moveBy(0,-27);
 collision();
 if(y() < 0){
     delete this;
+}else if(v->chickens.size() == 0){
+    delete this;
+
 }
 }
