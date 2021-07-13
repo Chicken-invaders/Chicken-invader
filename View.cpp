@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0) , lose(false)
 {
 
 // set cursor invisible
@@ -111,7 +111,6 @@ void View::addChicken(int numberOfChickens)
 void View::mouseMoveEvent(QMouseEvent * event)
 {
  spaceship->setPos(event->x() -50,event->y()-50);
- spaceship->Collision();
 }
 
 void View::addSpaceShip()
@@ -124,8 +123,8 @@ void View::addSpaceShip()
 //link shooting bullet to space key
 void View::keyPressEvent(QKeyEvent* click)
 {
-    if(click->key()==Qt::Key_Space)
-    {if(isGifted == false){
+    if(click->key()==Qt::Key_Space && !lose)
+    {if(isGifted == false ){
             bullet=new Bullet();
             scene->addItem(bullet);
             bullet->setPos(spaceship->x()+36,spaceship->y()-36);
@@ -252,6 +251,7 @@ if(sec == endLevelSecond+4){
           giftSecSaver=sec;
        }
      }
+
    if(sec % 5 == 0)
    randomGenerateEgg();
 

@@ -6,6 +6,9 @@ SpaceShip::SpaceShip()
    lives = new Lives();
    setPixmap(QPixmap(":/ images/spaceshipp.png"));
    setPos(910,800);
+   timer = new QTimer();
+   connect(timer , SIGNAL(timeout()) , this , SLOT(Collision()));
+   timer->start(20);
 }
 
 void SpaceShip::Collision()
