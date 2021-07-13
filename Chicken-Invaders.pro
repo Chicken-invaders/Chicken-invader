@@ -18,6 +18,7 @@ SOURCES += \
     Hen.cpp \
     Lives.cpp \
     Meat.cpp \
+    Menu.cpp \
     Score.cpp \
     Spaceship.cpp \
     Superhen.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     Hen.h \
     Lives.h \
     Meat.h \
+    Menu.h \
     Score.h \
     Spaceship.h \
     Superhen.h \

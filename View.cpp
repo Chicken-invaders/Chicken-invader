@@ -193,25 +193,25 @@ void View::schedule()
 {
     sec ++;
     if(sec == 1){
-        levelsText("Season 1 - Level 1:");
+        setLevelsText("Season 1 - Level 1:");
     }
    if(sec == 4){
-       levelsText("");
+       setLevelsText("");
        level_1();
        currentLevel = 1;
    }else if(currentLevel == 1 && chickens.size() == 0){
-       levelsText("Season 1 - Level 2:");
+       setLevelsText("Season 1 - Level 2:");
    if(sec == endLevelSecond+4){
-         levelsText("");
+         setLevelsText("");
        currentLevel = 2;
        level_2();
      }
    }
    else if(currentLevel == 2 && chickens.size() == 0){
-            levelsText("Season 2 - Level 1:");
+            setLevelsText("Season 2 - Level 1:");
         //from this stage we can have meat!
        if(sec == endLevelSecond+4){
-             levelsText("");
+             setLevelsText("");
         currentLevel = 3;
         level_3();
         meatIcon=new QGraphicsPixmapItem();
@@ -224,18 +224,18 @@ void View::schedule()
        }
    }
    else if(currentLevel == 3 && chickens.size() == 0){
-       levelsText("Season 2 - Level 2:");
+       setLevelsText("Season 2 - Level 2:");
        if(sec == endLevelSecond+4){
-             levelsText("");
+             setLevelsText("");
         currentLevel = 4;
         level_4();
        }
    }
    else if(currentLevel == 4 && chickens.size() == 0){
-       levelsText("Season 3 - Level 1:");
+       setLevelsText("Season 3 - Level 1:");
 if(sec == endLevelSecond+4){
 
-      levelsText("");
+      setLevelsText("");
        currentLevel = 5;
        level_5();
        giftSecSaver=sec;
@@ -243,9 +243,9 @@ if(sec == endLevelSecond+4){
 
   }
    else if(currentLevel == 5 && chickens.size() == 0){
-       levelsText("Season 3 - Level 2:");
+       setLevelsText("Season 3 - Level 2:");
        if(sec == endLevelSecond+4){
-          levelsText("");
+          setLevelsText("");
           currentLevel = 6;
           level_6();
           isGifted=false;
@@ -263,10 +263,10 @@ if(sec == endLevelSecond+4){
         scene->addItem(gift);
         gift->setPos(random,0);
    }
-   qDebug() << giftSecSaver;
+
 }
 
-void View::levelsText(QString string)
+void View::setLevelsText(QString string)
 {
 
     levelstext->setPlainText(string);
