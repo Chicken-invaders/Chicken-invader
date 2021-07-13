@@ -263,7 +263,7 @@ if(sec == endLevelSecond+4){
         scene->addItem(gift);
         gift->setPos(random,0);
    }
-   qDebug() << giftSecSaver;
+
 }
 
 void View::setLevelsText(QString string)

@@ -17,7 +17,7 @@ Menu::Menu(): QGraphicsView()
     newGameButton=new QPushButton();
     newGameButton->setGeometry(690,540,560,80);
     scene->addWidget(newGameButton);
-
+    //new Game button
     connect(newGameButton , SIGNAL(clicked()) , this , SLOT(playNewGame()));
 
      newGameButton->setAttribute(Qt::WA_TranslucentBackground);
@@ -26,6 +26,7 @@ Menu::Menu(): QGraphicsView()
              "border-image: url(:/ images/newgame-icon2.png) 3 3 3 3;"
                 "padding: 5px;"
 );
+    //Quit Game button
     quitButton=new QPushButton();
     quitButton->setGeometry(10,950,560,80);
     scene->addWidget(quitButton);
@@ -38,11 +39,12 @@ Menu::Menu(): QGraphicsView()
              "border-image: url(:/ images/exit-button.png) 3 3 3 3;"
                 "padding: 5px;"
 );
+    //creidt Game button
     cridtButton=new QPushButton();
     cridtButton->setGeometry(690,720,560,80);
     scene->addWidget(cridtButton);
 
-    connect(cridtButton , SIGNAL(clicked()) , this , SLOT(exitGame()));
+//    connect(cridtButton , SIGNAL(clicked()) , this , SLOT(exitGame()));
 
      cridtButton->setAttribute(Qt::WA_TranslucentBackground);
     cridtButton->setFixedSize(QSize(560,80));
@@ -50,11 +52,12 @@ Menu::Menu(): QGraphicsView()
              "border-image: url(:/ images/credits_button.png) 3 3 3 3;"
                 "padding: 5px;"
 );
+    //load Game button
     loadButton=new QPushButton();
     loadButton->setGeometry(690,630,560,80);
     scene->addWidget(loadButton);
 
-    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
+//    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
 
      loadButton->setAttribute(Qt::WA_TranslucentBackground);
     loadButton->setFixedSize(QSize(560,80));
