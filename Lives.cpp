@@ -1,5 +1,7 @@
 #include "Lives.h"
 #include <QFont>
+#include "View.h"
+extern View * v;
 Lives::Lives() :  QGraphicsTextItem()  , lives(3)
 {
        setPlainText(QString::number(lives));
@@ -12,7 +14,6 @@ void Lives::decreaseLives()
     lives--;
     setPlainText(QString::number(lives));
     if(lives == 0){
-        exit(1);
+        v->endLevelSecond = v->sec;
     }
-
 }

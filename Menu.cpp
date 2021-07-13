@@ -1,3 +1,4 @@
+#include <QThread>
 #include "Menu.h"
 View * v;
 Menu::Menu(): QGraphicsView()
@@ -97,9 +98,17 @@ void Menu::checkEnd()
         if(v->sec == v->endLevelSecond+4){
             delete v;
             this->show();
-           timer->stop();
+            timer->stop();
         }
-
     }
-
+    if(v->spaceship->lives->lives == 0){
+        v->levelstext->setFont(QFont("sans-selif"));
+        v->setLevelsText("       game over!");
+        v->lose = true;
+        if(v->sec == v->endLevelSecond+4){
+            delete v;
+            this->show();
+            timer->stop();
+        }
+    }
 }

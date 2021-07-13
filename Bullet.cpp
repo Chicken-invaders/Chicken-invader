@@ -43,10 +43,10 @@ void Bullet::collision()
                      delete collidingitems[i];
                     //remove hen or chicken from vector
                     v->chickens.remove(j);
-              if(v->chickens.size() == 0){
-              v->endLevelSecond = v->sec;
-               }
-             }
+             if(v->chickens.size() == 0){
+                 v->endLevelSecond = v->sec;
+              }
+            }
                 // delete bullet
                 delete this;
                return;

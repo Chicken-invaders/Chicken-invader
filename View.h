@@ -30,6 +30,7 @@ private:
     friend class Score;
     friend class Hen;
     friend class Menu;
+    friend class Lives;
     QTimer * vtimer;
     int sec;
     int giftSecSaver;
@@ -51,6 +52,7 @@ private:
     Meat* meat;
     Gift* gift;
     QRandomGenerator *gen6;
+    bool lose;
     bool isGifted;
     int rvalue;
     int row;

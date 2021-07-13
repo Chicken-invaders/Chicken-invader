@@ -1,7 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
-View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0)
+View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0) , lose(false)
 {
 
 // set cursor invisible
@@ -123,8 +123,8 @@ void View::addSpaceShip()
 //link shooting bullet to space key
 void View::keyPressEvent(QKeyEvent* click)
 {
-    if(click->key()==Qt::Key_Space)
-    {if(isGifted == false){
+    if(click->key()==Qt::Key_Space && !lose)
+    {if(isGifted == false ){
             bullet=new Bullet();
             scene->addItem(bullet);
             bullet->setPos(spaceship->x()+36,spaceship->y()-36);
