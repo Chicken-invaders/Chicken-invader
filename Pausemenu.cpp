@@ -20,9 +20,11 @@ PauseMenu::PauseMenu()
     save=new QPushButton();
     save->setGeometry(690,630,560,80);
     scene->addWidget(save);
+
+    connect(save , SIGNAL(clicked()) , this , SLOT(saveF()));
+
     save->setAttribute(Qt::WA_TranslucentBackground);
-//   save->setFixedSize(QSize(560,80));
-   save->setStyleSheet(
+    save->setStyleSheet(
             "border-image: url(:/ images/save_button.png) 3 3 3 3;"
                "padding: 5px;"
 );
@@ -34,8 +36,7 @@ PauseMenu::PauseMenu()
 
     connect(Resume , SIGNAL(clicked()) , this , SLOT(resumeF()));
 
-    Resume->setAttribute(Qt::WA_TranslucentBackground);
-//   Resume->setFixedSize(QSize(560,80));
+   Resume->setAttribute(Qt::WA_TranslucentBackground);
    Resume->setStyleSheet(
             "border-image: url(:/ images/resume-button.png) 3 3 3 3;"
                "padding: 5px;"
@@ -53,7 +54,15 @@ PauseMenu::PauseMenu()
             "border-image: url(:/ images/main-menu-button.png) 3 3 3 3;"
                "padding: 5px;"
 );
-connect(menu , SIGNAL(clicked()) , this , SLOT(goToMenu()));
+   connect(menu , SIGNAL(clicked()) , this , SLOT(goToMenu()));
+}
+
+PauseMenu::~PauseMenu()
+{
+//    delete scene;
+//    delete save;
+//    delete Resume;
+//    delete menu;
 }
 
 void PauseMenu::keyPressEvent(QKeyEvent * click)
@@ -66,15 +75,35 @@ void PauseMenu::keyPressEvent(QKeyEvent * click)
 
 void PauseMenu::goToMenu()
 {
-m->show();
-m->timer->stop();
-delete this;
-
-delete v;
+  this->hide();
+  m->show();
+  m->timer->stop();
+  delete v;
+ // delete this;
 }
 
 void PauseMenu::resumeF()
-{ this->hide();
+{
+    this->hide();
     v->pause=false;
+
+}
+
+void PauseMenu::saveF()
+{
+    QFile file("qrc:/Files/Game.txt");
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text) )
+    {
+        QTextStream stream(&file);
+        stream << v->currentLevel << " " << v->spaceship->lives->lives << " " << v->score->scores << " " << v->nom->scores << endl;
+        qDebug() << v->currentLevel << " " << v->spaceship->lives->lives << " " << v->score->scores << " " << v->nom->scores << endl;
+    }
+
+    this->hide();
+    m->show();
+    m->timer->stop();
+    delete v;
+//  delete this;
 
 }

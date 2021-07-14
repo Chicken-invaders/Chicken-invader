@@ -19,8 +19,8 @@ class Chicken : public QObject , public QGraphicsPixmapItem
     QTimer * moveTimer;
     QTimer * motionTimer;
     QTimer * inPlaceMotionTimer;
-    Egg * egg;
     QTimer *eggtime;
+    Egg * egg; 
     Meat * meat;
 
 

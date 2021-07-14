@@ -10,6 +10,11 @@ timer->start(50);
 
 }
 
+Meat::~Meat()
+{
+    delete timer;
+}
+
 void Meat::generateMeat(int x ,int y)
 {
     v->meat=new Meat();

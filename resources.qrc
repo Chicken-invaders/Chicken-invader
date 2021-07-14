@@ -38,4 +38,8 @@
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>
     </qresource>
+    <qresource prefix="/new/prefix1"/>
+    <qresource prefix="/Files">
+        <file>Game.txt</file>
+    </qresource>
 </RCC>

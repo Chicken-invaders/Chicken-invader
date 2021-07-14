@@ -3,7 +3,7 @@
 #include <QFont>
 #include "View.h"
 extern View* v;
-Score::Score() :QGraphicsTextItem() , scores(0)
+Score::Score(int score) :QGraphicsTextItem() , scores(score)
 {
 setPlainText(QString::number(scores));
 setDefaultTextColor("white");

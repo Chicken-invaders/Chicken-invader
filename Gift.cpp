@@ -10,6 +10,11 @@ setPixmap(QPixmap(":/ images/gift.png"));
 
 }
 
+Gift::~Gift()
+{
+ delete timer;
+}
+
 void Gift::moveDown()
 {
      moveBy(0,+27);

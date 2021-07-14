@@ -9,6 +9,7 @@ class Explosion :  public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Explosion();
+    ~ Explosion();
     QTimer *timer;
     int counter;
 

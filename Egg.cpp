@@ -18,7 +18,7 @@ time->start(20);
 
 Egg::~Egg()
 {
-
+delete timer;
 }
 
 void Egg::moveDown()

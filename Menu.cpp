@@ -58,7 +58,7 @@ Menu::Menu(): QGraphicsView()
     loadButton->setGeometry(690,630,560,80);
     scene->addWidget(loadButton);
 
-//    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
+    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
 
      loadButton->setAttribute(Qt::WA_TranslucentBackground);
     loadButton->setFixedSize(QSize(560,80));
@@ -72,10 +72,20 @@ Menu::Menu(): QGraphicsView()
 
 }
 
+Menu::~Menu()
+{
+    delete scene;
+    delete newGameButton;
+    delete quitButton;
+    delete cridtButton;
+    delete loadButton;
+    delete timer;
+}
+
 void Menu::playNewGame()
 {
 
-    v = new View();
+    v = new View(0,3,0,0);
     v->show();
     this->hide();
     timer->start(20);
@@ -88,7 +98,18 @@ void Menu::exitGame()
 
 void Menu::load()
 {
+    int currentlevel , lives , scores  , nom;
 
+    QFile file(":/Files/Game.txt");
+    if ( file.open(QIODevice::ReadOnly) )
+    {
+        QTextStream stream(&file);
+        stream >> currentlevel >> lives >> scores  >> nom;
+    }
+    v = new View(currentlevel-1, lives , scores , nom);
+    v->show();
+    this->hide();
+    timer->start(20);
 }
 
 void Menu::checkEnd()
@@ -103,7 +124,7 @@ void Menu::checkEnd()
     }
     if(v->spaceship->lives->lives == 0){
 
-        v->setLevelsText("       game over!");
+        v->setLevelsText("      game over!");
         v->lose = true;
         if(v->sec == v->endLevelSecond+4){
             delete v;

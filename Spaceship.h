@@ -22,10 +22,9 @@ private:
     Bullet* bullet;
     QTimer * timer;
 
-
-
 public: Lives * lives;
-    SpaceShip();
+    SpaceShip(int lives);
+    ~SpaceShip();
 public slots:
     void Collision();
 

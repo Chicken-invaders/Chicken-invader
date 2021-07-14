@@ -1,14 +1,21 @@
 #include "Spaceship.h"
 #include "View.h"
 extern View * v;
-SpaceShip::SpaceShip()
+SpaceShip::SpaceShip(int live)
 {
-   lives = new Lives();
+   lives = new Lives(live);
    setPixmap(QPixmap(":/ images/spaceshipp.png"));
    setPos(910,800);
    timer = new QTimer();
    connect(timer , SIGNAL(timeout()) , this , SLOT(Collision()));
    timer->start(20);
+}
+
+SpaceShip::~SpaceShip()
+{
+    delete explo;
+    delete bullet;
+    delete timer;
 }
 
 void SpaceShip::Collision()
@@ -80,7 +87,7 @@ for(int i=0;i<collidingitems.size();i++){
      }else if(typeid (*(collidingitems[i]))==typeid (Meat)){
         delete collidingitems[i];//check whether the spaceship has recevied the meat or not
         v->nom->increase(1);
-        if(v->nom->scores==30&& v->currentLevel>2)
+        if(v->nom->scores==30 && v->currentLevel>2)
         {
 
             v->score->increase(50);

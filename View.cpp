@@ -2,7 +2,9 @@
 #include "QThread"
 #include "QDebug"
 PauseMenu * p;
-View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0) , lose(false)
+View::View( int currentLevel , int inputLives , int inputScores , int inputMeats) :
+    currentLevel(currentLevel) , inputLives(inputLives) , inputScores(inputScores) , inputMeats(inputMeats),
+    QGraphicsView() , isGifted(false) , giftSecSaver(0) , lose(false), sec(0) , endLevelSecond(0)
 {
 
 // set cursor invisible
@@ -66,7 +68,7 @@ musicPlayer->play();
 
 
 //score part
-score = new Score();
+score = new Score(inputScores);
 scene->addItem(score);
 score->setPos(50 ,2);
 
@@ -75,6 +77,15 @@ levelstext->setDefaultTextColor("white");
 levelstext->setFont(QFont("timer" , 50));
 scene->addItem(levelstext);
 levelstext->setPos(650 , 450);
+
+//meat section
+meatIcon=new QGraphicsPixmapItem();
+meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
+scene->addItem(meatIcon);
+meatIcon->setPos(60 ,1035);
+nom=new Score(inputMeats);
+scene->addItem(nom);
+nom->setPos(20 ,1032);
 }
 
 View::~View()
@@ -117,7 +128,7 @@ void View::mouseMoveEvent(QMouseEvent * event)
 
 void View::addSpaceShip()
 {
-    spaceship=new SpaceShip();
+    spaceship=new SpaceShip(inputLives);
     scene->addItem(spaceship);
 }
 
@@ -197,10 +208,10 @@ void View::level_6()
 void View::schedule()
 {
     sec ++;
-    if(sec == 1){
+    if(currentLevel == 0 && sec == 1){
         setLevelsText("Season 1 - Level 1:");
     }
-   if(sec == 4){
+   if(currentLevel == 0 && sec == 4){
          setLevelsText("");
          level_1();
          currentLevel = 1;
@@ -219,13 +230,7 @@ void View::schedule()
              setLevelsText("");
              currentLevel = 3;
              level_3();
-             meatIcon=new QGraphicsPixmapItem();
-             meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
-             scene->addItem(meatIcon);
-             meatIcon->setPos(60 ,1035);
-             nom=new Score();
-             scene->addItem(nom);
-             nom->setPos(20 ,1032);
+
        }
    }
    else if(currentLevel == 3 && chickens.size() == 0){
@@ -295,6 +300,5 @@ void View::randomGenerateEgg()
                 gen6 = QRandomGenerator::system();
                 rvalue=gen6->bounded(chickens.size());
                 (chickens[rvalue]->generateEgg());
-         }
-
+     }
 }
