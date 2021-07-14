@@ -1,6 +1,7 @@
 #include "View.h"
 #include "QThread"
 #include "QDebug"
+PauseMenu * p;
 View::View() : QGraphicsView() , sec(0) , currentLevel(0) , isGifted(false) , giftSecSaver(0) , lose(false)
 {
 
@@ -109,7 +110,7 @@ void View::addChicken(int numberOfChickens)
 
 //link spaceship movment to the cursor
 void View::mouseMoveEvent(QMouseEvent * event)
-{
+{if( !lose&& pause==false)
  spaceship->setPos(event->x() -50,event->y()-50);
 }
 
@@ -123,7 +124,7 @@ void View::addSpaceShip()
 //link shooting bullet to space key
 void View::keyPressEvent(QKeyEvent* click)
 {
-    if(click->key()==Qt::Key_Space && !lose)
+    if(click->key()==Qt::Key_Space && !lose && pause==false)
     {if(isGifted == false ){
             bullet=new Bullet();
             scene->addItem(bullet);
@@ -137,7 +138,11 @@ void View::keyPressEvent(QKeyEvent* click)
                 scene->addItem(bullet);
                 bullet->setPos(spaceship->x()+10,spaceship->y());
     }
-  }
+  }if(click->key()==Qt::Key_1){
+        p=new PauseMenu;
+        p->show();
+        pause=true;
+    }
 }
 
 void View::level_1()
@@ -195,39 +200,39 @@ void View::schedule()
         setLevelsText("Season 1 - Level 1:");
     }
    if(sec == 4){
-       setLevelsText("");
-       level_1();
-       currentLevel = 1;
+         setLevelsText("");
+         level_1();
+         currentLevel = 1;
    }else if(currentLevel == 1 && chickens.size() == 0){
-       setLevelsText("Season 1 - Level 2:");
+         setLevelsText("Season 1 - Level 2:");
    if(sec == endLevelSecond+4){
          setLevelsText("");
-       currentLevel = 2;
-       level_2();
+         currentLevel = 2;
+         level_2();
      }
    }
    else if(currentLevel == 2 && chickens.size() == 0){
-            setLevelsText("Season 2 - Level 1:");
+             setLevelsText("Season 2 - Level 1:");
         //from this stage we can have meat!
        if(sec == endLevelSecond+4){
              setLevelsText("");
-        currentLevel = 3;
-        level_3();
-        meatIcon=new QGraphicsPixmapItem();
-        meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
-        scene->addItem(meatIcon);
-        meatIcon->setPos(60 ,1035);
-        nom=new Score();
-        scene->addItem(nom);
-        nom->setPos(20 ,1032);
+             currentLevel = 3;
+             level_3();
+             meatIcon=new QGraphicsPixmapItem();
+             meatIcon->setPixmap(QPixmap(":/ images/meaticon.png"));
+             scene->addItem(meatIcon);
+             meatIcon->setPos(60 ,1035);
+             nom=new Score();
+             scene->addItem(nom);
+             nom->setPos(20 ,1032);
        }
    }
    else if(currentLevel == 3 && chickens.size() == 0){
        setLevelsText("Season 2 - Level 2:");
        if(sec == endLevelSecond+4){
              setLevelsText("");
-        currentLevel = 4;
-        level_4();
+             currentLevel = 4;
+             level_4();
        }
    }
    else if(currentLevel == 4 && chickens.size() == 0){
@@ -277,7 +282,7 @@ void View::randomGenerateEgg()
 {
     if(currentLevel < 5 && currentLevel > 2)
     for(int i =0;i<chickens.size()/8;i++){
-           gen6 = QRandomGenerator::system();
+            gen6 = QRandomGenerator::system();
             rvalue=gen6->bounded(chickens.size()-1);
             //Even indexs are chickens - convert random value to Odd to generate egg for hens
             if(rvalue % 2 == 0) rvalue++;

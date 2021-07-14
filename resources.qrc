@@ -31,6 +31,9 @@
         <file>load_button.png</file>
         <file>credits_button.png</file>
         <file>exit-button.png</file>
+        <file>resume-button.png</file>
+        <file>save_button.png</file>
+        <file>main-menu-button.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>02-04. Main Theme (Remastered).mp3</file>

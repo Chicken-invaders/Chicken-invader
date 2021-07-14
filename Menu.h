@@ -13,6 +13,7 @@
 
 class Menu :public QGraphicsView
 {           Q_OBJECT
+
     private:
     QTimer * timer;
     QGraphicsScene * scene;

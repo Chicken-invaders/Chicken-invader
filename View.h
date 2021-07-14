@@ -16,6 +16,7 @@
 #include "Score.h"
 #include "Hen.h"
 #include "Spaceship.h"
+#include "Pausemenu.h"
 
 class View : public QGraphicsView
 {
@@ -31,6 +32,7 @@ private:
     friend class Hen;
     friend class Menu;
     friend class Lives;
+    friend class PauseMenu;
     QTimer * vtimer;
     int sec;
     int giftSecSaver;
@@ -53,6 +55,7 @@ private:
     Gift* gift;
     QRandomGenerator *gen6;
     bool lose;
+    bool pause=false;
     bool isGifted;
     int rvalue;
     int row;
