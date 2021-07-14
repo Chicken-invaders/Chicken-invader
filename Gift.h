@@ -11,7 +11,7 @@ class Gift:public QObject , public QGraphicsPixmapItem
 private:
     QTimer *timer;
 public:
-    Gift();
+     Gift();
     ~Gift();
 public slots:
     void moveDown();

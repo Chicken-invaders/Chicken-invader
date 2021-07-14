@@ -12,13 +12,11 @@ QTimer *time=new QTimer();
 connect(timer , SIGNAL(timeout()) , this , SLOT(deletefEgg()));
 time->start(20);
 
-//generateEgg();
-
 }
 
 Egg::~Egg()
 {
-delete timer;
+    delete timer;
 }
 
 void Egg::moveDown()
@@ -32,13 +30,13 @@ void Egg::moveDown()
     else
     {
         disconnect(timer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-          convertedEggTime=v->sec;
-        setPixmap(QPixmap(":/ images/fEgg.png"));
+        convertedEggTime=v->sec;
+        setPixmap(QPixmap(":/ images/fEgg.png"));//convert picture of fried egg
     }
 
 
 
-  if(y()>1080)
+    if(y()>1080)
       delete this;
 }
 

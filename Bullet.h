@@ -10,7 +10,7 @@ class Bullet:  public QObject , public QGraphicsPixmapItem
 
    Q_OBJECT
     private:
-    QTimer* timer;
+    QTimer* timer;// timer to move up the bullets
     public:
     Bullet();
     ~Bullet();

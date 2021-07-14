@@ -4,12 +4,12 @@
 #include <QGraphicsView>
 #include <QPushButton>
 #include <QGraphicsPixmapItem>
-#include "View.h"
+
 #include <QPixmap>
 #include <QKeyEvent>
 
 class PauseMenu:public QGraphicsView
-{   Q_OBJECT
+{    Q_OBJECT
 private:
      QGraphicsScene * scene;
      QPushButton* save;
@@ -17,9 +17,9 @@ private:
      QPushButton* menu;
 public:
 
-    PauseMenu();
+     PauseMenu();
     ~PauseMenu();
-     void keyPressEvent(QKeyEvent *);
+     void keyPressEvent(QKeyEvent *);//ESC for pause the game
 public slots :
      void goToMenu();
      void resumeF();

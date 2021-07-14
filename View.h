@@ -22,7 +22,9 @@ class View : public QGraphicsView
 {
 
     Q_OBJECT
+
 private:
+
     friend class Bullet;
     friend class SpaceShip;
     friend class Egg;
@@ -33,10 +35,8 @@ private:
     friend class Menu;
     friend class Lives;
     friend class PauseMenu;
-    QTimer * vtimer;
-    int sec;
-    int giftSecSaver;
-    int changeLevelSec;
+
+    QTimer * vtimer;  //timer for scheudle
     QGraphicsScene * scene;
     QGraphicsRectItem * rectItem;
     QGraphicsPixmapItem * scoreBoard;
@@ -45,18 +45,26 @@ private:
     QGraphicsPixmapItem * meatIcon;
     QGraphicsTextItem * levelstext;
     QVector <Chicken *> chickens;
+    QMediaPlayer* musicPlayer;
+    QRandomGenerator *gen6;
+    QRandomGenerator *gen5;
     SpaceShip * spaceship;
     Bullet * bullet;
     Bullet * bullet2;
     Score * score;
-    Score * nom; //numberOfMeats
+    Score * nom;   //numberOfMeats
     Egg * egg;
     Meat* meat;
     Gift* gift;
-    QRandomGenerator *gen6;
+
     bool lose;
-    bool pause=false;
+    bool pause;
     bool isGifted;
+
+
+    int sec;
+    int giftSecSaver;
+    int changeLevelSec;
     int rvalue;
     int row;
     int col;
@@ -67,9 +75,6 @@ private:
     int inputScores;
     int inputMeats;
 
-
-
-
        public:
        QList<QGraphicsItem *> deltedObjects;
        explicit View( int currentLevel , int inputLives , int inputScores , int inputMeats);
@@ -79,6 +84,7 @@ private:
        void addBullet();
        void addSpaceShip();
        void keyPressEvent(QKeyEvent *);
+       //function levels
        void level_1();
        void level_2();
        void level_3();
@@ -92,7 +98,7 @@ private:
 
 
 public slots:
-void schedule();
+void schedule();//funtion to update game every 1s(1000ms)
 
 };
 

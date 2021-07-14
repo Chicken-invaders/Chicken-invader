@@ -11,7 +11,6 @@ CONFIG += resources_big
 SOURCES += \
     Bullet.cpp \
     Chicken.cpp \
-    Controller.cpp \
     Egg.cpp \
     Explosion.cpp \
     Gift.cpp \
@@ -29,7 +28,6 @@ SOURCES += \
 HEADERS += \
     Bullet.h \
     Chicken.h \
-    Controller.h \
     Egg.h \
     Explosion.h \
     Gift.h \
