@@ -25,7 +25,7 @@ private:
 
 
 public: Lives * lives;
-    SpaceShip();
+    SpaceShip(int lives);
 public slots:
     void Collision();
 

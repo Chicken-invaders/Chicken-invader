@@ -6,7 +6,7 @@ class Lives : public QGraphicsTextItem
 
 public:
     int lives;
-    Lives();
+    Lives(int lives);
     void decreaseLives();
 };
 

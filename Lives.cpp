@@ -2,7 +2,7 @@
 #include <QFont>
 #include "View.h"
 extern View * v;
-Lives::Lives() :  QGraphicsTextItem()  , lives(3)
+Lives::Lives(int lives) :  QGraphicsTextItem()  , lives(lives)
 {
        setPlainText(QString::number(lives));
        setDefaultTextColor("white");

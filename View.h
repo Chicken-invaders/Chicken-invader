@@ -63,13 +63,16 @@ private:
     int pos_x;
     int endLevelSecond;
     int currentLevel;
+    int inputLives;
+    int inputScores;
+    int inputMeats;
 
 
 
 
        public:
        QList<QGraphicsItem *> deltedObjects;
-       explicit View();
+       explicit View( int currentLevel , int inputLives , int inputScores , int inputMeats);
        ~View();
        void addChicken(int index);
        void mouseMoveEvent(QMouseEvent * event);
@@ -84,6 +87,7 @@ private:
        void level_6();
        void setLevelsText(QString string);
        void randomGenerateEgg();
+
 
 
 

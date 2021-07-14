@@ -7,10 +7,13 @@
 
 class Bullet:  public QObject , public QGraphicsPixmapItem
 {
+
    Q_OBJECT
+    private:
+    QTimer* timer;
     public:
     Bullet();
-    QTimer* timer;
+    ~Bullet();
     void collision();
 
  public slots:

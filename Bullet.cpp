@@ -14,6 +14,11 @@ timer->start(50);
 
 }
 
+Bullet::~Bullet()
+{
+    delete timer;
+}
+
 void Bullet::collision()
 {
 

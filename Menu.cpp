@@ -58,7 +58,7 @@ Menu::Menu(): QGraphicsView()
     loadButton->setGeometry(690,630,560,80);
     scene->addWidget(loadButton);
 
-//    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
+    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
 
      loadButton->setAttribute(Qt::WA_TranslucentBackground);
     loadButton->setFixedSize(QSize(560,80));
@@ -75,7 +75,7 @@ Menu::Menu(): QGraphicsView()
 void Menu::playNewGame()
 {
 
-    v = new View();
+    v = new View(0,3,0,0);
     v->show();
     this->hide();
     timer->start(20);
@@ -88,7 +88,18 @@ void Menu::exitGame()
 
 void Menu::load()
 {
+    int currentlevel , lives , scores  , nom;
 
+    QFile file(":/Files/Game.txt");
+    if ( file.open(QIODevice::ReadOnly) )
+    {
+        QTextStream stream(&file);
+        stream >> currentlevel >> lives >> scores  >> nom;
+    }
+    v = new View(currentlevel , lives , scores , nom);
+    v->show();
+    this->hide();
+    timer->start(20);
 }
 
 void Menu::checkEnd()

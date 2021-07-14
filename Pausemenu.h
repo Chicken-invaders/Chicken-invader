@@ -22,6 +22,7 @@ public:
 public slots :
      void goToMenu();
      void resumeF();
+     void saveF();
 };
 
 #endif // PAUSEMENU_H
