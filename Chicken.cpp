@@ -19,14 +19,16 @@ inPlaceMotionTimer->start(200);
 
 Chicken::~Chicken()
 {
+    delete moveTimer;
+    delete motionTimer;
+    delete inPlaceMotionTimer;
 }
 
 void Chicken::generateEgg()
 {
-    egg=new Egg;
-v->scene->addItem(egg);
- egg->setPos(this->x()+50,this->y()+90);
-// egg->moveDown();
+  egg=new Egg;
+  v->scene->addItem(egg);
+  egg->setPos(this->x()+50,this->y()+90);
 
 }
 

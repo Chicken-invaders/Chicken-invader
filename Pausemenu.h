@@ -18,6 +18,7 @@ private:
 public:
 
     PauseMenu();
+    ~PauseMenu();
      void keyPressEvent(QKeyEvent *);
 public slots :
      void goToMenu();

@@ -54,7 +54,15 @@ PauseMenu::PauseMenu()
             "border-image: url(:/ images/main-menu-button.png) 3 3 3 3;"
                "padding: 5px;"
 );
-connect(menu , SIGNAL(clicked()) , this , SLOT(goToMenu()));
+   connect(menu , SIGNAL(clicked()) , this , SLOT(goToMenu()));
+}
+
+PauseMenu::~PauseMenu()
+{
+//    delete scene;
+//    delete save;
+//    delete Resume;
+//    delete menu;
 }
 
 void PauseMenu::keyPressEvent(QKeyEvent * click)
@@ -67,29 +75,35 @@ void PauseMenu::keyPressEvent(QKeyEvent * click)
 
 void PauseMenu::goToMenu()
 {
-m->show();
-m->timer->stop();
-delete this;
-delete v;
+  this->hide();
+  m->show();
+  m->timer->stop();
+  delete v;
+ // delete this;
 }
 
 void PauseMenu::resumeF()
-{ this->hide();
+{
+    this->hide();
     v->pause=false;
 
 }
 
 void PauseMenu::saveF()
 {
-    QFile file(":/Files/Game.txt");
-    if ( file.open(QIODevice::WriteOnly) )
+    QFile file("qrc:/Files/Game.txt");
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text) )
     {
         QTextStream stream(&file);
         stream << v->currentLevel << " " << v->spaceship->lives->lives << " " << v->score->scores << " " << v->nom->scores << endl;
+        qDebug() << v->currentLevel << " " << v->spaceship->lives->lives << " " << v->score->scores << " " << v->nom->scores << endl;
     }
+
+    this->hide();
     m->show();
     m->timer->stop();
     delete v;
-    delete this;
+//  delete this;
 
 }

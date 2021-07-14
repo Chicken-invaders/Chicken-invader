@@ -14,16 +14,17 @@
 class Menu :public QGraphicsView
 {           Q_OBJECT
 
+    friend class PauseMenu;
     private:
-
     QGraphicsScene * scene;
     QPushButton * newGameButton;
     QPushButton * quitButton;
     QPushButton * cridtButton;
     QPushButton * loadButton;
+    QTimer * timer;
     public:
     Menu();
- QTimer * timer;
+    ~Menu();
  public slots:
        void playNewGame();
        void exitGame();

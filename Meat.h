@@ -11,6 +11,7 @@ private:
     QTimer* timer;
 public:
     Meat();
+    ~Meat();
 void generateMeat(int ,int);
 public slots:
     void moveDown();

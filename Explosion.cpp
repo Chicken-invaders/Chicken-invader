@@ -7,6 +7,11 @@ Explosion::Explosion(): counter(0)
     timer->start(80);
 }
 
+Explosion::~Explosion()
+{
+    delete timer;
+}
+
 void Explosion::exploAnimation()
 {
     if(counter == 0)

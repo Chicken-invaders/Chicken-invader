@@ -300,5 +300,5 @@ void View::randomGenerateEgg()
                 gen6 = QRandomGenerator::system();
                 rvalue=gen6->bounded(chickens.size());
                 (chickens[rvalue]->generateEgg());
-         }
+     }
 }

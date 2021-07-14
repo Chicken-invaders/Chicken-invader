@@ -12,6 +12,7 @@ private:
     QTimer *timer;
 public:
     Gift();
+    ~Gift();
 public slots:
     void moveDown();
 };

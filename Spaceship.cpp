@@ -11,6 +11,13 @@ SpaceShip::SpaceShip(int live)
    timer->start(20);
 }
 
+SpaceShip::~SpaceShip()
+{
+    delete explo;
+    delete bullet;
+    delete timer;
+}
+
 void SpaceShip::Collision()
 {
     QList<QGraphicsItem *> collidingitems= collidingItems();
