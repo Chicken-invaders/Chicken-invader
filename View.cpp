@@ -63,7 +63,7 @@ spaceship->lives->setPos(110,1033);
 
 //music
 auto musicPlayer =new QMediaPlayer();
-musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
+musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered).mp3"));
 musicPlayer->play();
 
 
