@@ -3,6 +3,7 @@
 View * v;
 Menu::Menu(): QGraphicsView()
 {
+    // set style shit syntaxes give style to buttons
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,1920,1080);
     setScene(scene);
@@ -45,7 +46,7 @@ Menu::Menu(): QGraphicsView()
     cridtButton->setGeometry(690,720,560,80);
     scene->addWidget(cridtButton);
 
-//    connect(cridtButton , SIGNAL(clicked()) , this , SLOT(exitGame()));
+
 
      cridtButton->setAttribute(Qt::WA_TranslucentBackground);
     cridtButton->setFixedSize(QSize(560,80));
@@ -116,7 +117,8 @@ void Menu::checkEnd()
 {
     if(v->currentLevel == 6 && v->chickens.size() == 0){
         v->setLevelsText("Great work! you won!");
-        if(v->sec == v->endLevelSecond+4){
+        if(v->sec == v->endLevelSecond+4){//quit the game after 4 second
+            v->musicPlayer->stop();
             delete v;
             this->show();
             timer->stop();
@@ -126,7 +128,8 @@ void Menu::checkEnd()
 
         v->setLevelsText("      game over!");
         v->lose = true;
-        if(v->sec == v->endLevelSecond+4){
+        if(v->sec == v->endLevelSecond+4){//quit the game after 4 second
+            v->musicPlayer->stop();
             delete v;
             this->show();
             timer->stop();

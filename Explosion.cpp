@@ -15,7 +15,7 @@ Explosion::~Explosion()
 void Explosion::exploAnimation()
 {
     if(counter == 0)
-    setPixmap(QPixmap(":/ images/boom0.png"));
+        setPixmap(QPixmap(":/ images/boom0.png"));
     else if(counter == 1)
         setPixmap(QPixmap(":/ images/boom1.png"));
     else if(counter  == 2)

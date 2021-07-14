@@ -4,7 +4,7 @@
 PauseMenu * p;
 View::View( int currentLevel , int inputLives , int inputScores , int inputMeats) :
     currentLevel(currentLevel) , inputLives(inputLives) , inputScores(inputScores) , inputMeats(inputMeats),
-    QGraphicsView() , isGifted(false) , giftSecSaver(0) , lose(false), sec(0) , endLevelSecond(0)
+    QGraphicsView() , isGifted(false) , giftSecSaver(0) , lose(false), sec(0) , endLevelSecond(0),pause(false)
 {
 
 // set cursor invisible
@@ -62,8 +62,8 @@ scene->addItem(spaceship->lives);
 spaceship->lives->setPos(110,1033);
 
 //music
-auto musicPlayer =new QMediaPlayer();
-musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered)"));
+ musicPlayer =new QMediaPlayer();
+musicPlayer->setMedia(QUrl("qrc:/music/02-04. Main Theme (Remastered).mp3"));
 musicPlayer->play();
 
 
@@ -150,10 +150,11 @@ void View::keyPressEvent(QKeyEvent* click)
                 scene->addItem(bullet);
                 bullet->setPos(spaceship->x()+10,spaceship->y());
     }
-  }if(click->key()==Qt::Key_1){
+  }if(click->key()==Qt::Key_Escape){
         p=new PauseMenu;
         p->show();
         pause=true;
+
     }
 }
 
@@ -263,19 +264,19 @@ if(sec == endLevelSecond+4){
        }
      }
 
-   if(sec % 5 == 0)
-   randomGenerateEgg();
+      if(sec % 5 == 0)//random generation per 5 second
+      randomGenerateEgg();
 
-   if(sec-giftSecSaver==15 && currentLevel > 4){
-       //generation random pix.x() for the postion of the gift
-        QRandomGenerator *gen5 = QRandomGenerator::system();
+     if(sec-giftSecSaver==15 && currentLevel > 4){
+
+        gen5 = QRandomGenerator::system();
         int random=gen5->bounded(30,1900);
         gift=new Gift();
         scene->addItem(gift);
         gift->setPos(random,0);
    }
 
-//qDebug()<<nom->scores;
+
 }
 
 void View::setLevelsText(QString string)
@@ -287,15 +288,15 @@ void View::setLevelsText(QString string)
 
 void View::randomGenerateEgg()
 {
-    if(currentLevel < 5 && currentLevel > 2)
-    for(int i =0;i<chickens.size()/8;i++){
+    if(currentLevel < 5 && currentLevel > 2)//level 3 and 4 egg generation
+        for(int i =0;i<chickens.size()/8;i++){
             gen6 = QRandomGenerator::system();
             rvalue=gen6->bounded(chickens.size()-1);
             //Even indexs are chickens - convert random value to Odd to generate egg for hens
             if(rvalue % 2 == 0) rvalue++;
             (chickens[rvalue]->generateEgg());
      }
-    else if(currentLevel > 4)
+    else if(currentLevel > 4)//level 5 and 6 egg generation
         for(int i =0;i<chickens.size()/4;i++){
                 gen6 = QRandomGenerator::system();
                 rvalue=gen6->bounded(chickens.size());

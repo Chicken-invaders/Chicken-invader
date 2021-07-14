@@ -67,9 +67,10 @@ PauseMenu::~PauseMenu()
 
 void PauseMenu::keyPressEvent(QKeyEvent * click)
 {
-     if(click->key()==Qt::Key_1){
+     if(click->key()==Qt::Key_Escape){
             this->hide();
             v->pause=false;
+
      }
 }
 
@@ -78,6 +79,7 @@ void PauseMenu::goToMenu()
   this->hide();
   m->show();
   m->timer->stop();
+  v->musicPlayer->stop();
   delete v;
  // delete this;
 }
@@ -85,7 +87,9 @@ void PauseMenu::goToMenu()
 void PauseMenu::resumeF()
 {
     this->hide();
+    v->spaceship->setPos(960,900);
     v->pause=false;
+
 
 }
 
@@ -103,6 +107,7 @@ void PauseMenu::saveF()
     this->hide();
     m->show();
     m->timer->stop();
+    v->musicPlayer->stop();
     delete v;
 //  delete this;
 

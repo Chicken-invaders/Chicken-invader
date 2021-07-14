@@ -25,11 +25,12 @@ class Menu :public QGraphicsView
     public:
     Menu();
     ~Menu();
+
  public slots:
        void playNewGame();
        void exitGame();
        void load();
-       void checkEnd();
+       void checkEnd();//check whether the game has ended or not(for showing winner and loser!)
 };
 
 #endif // MENU_H

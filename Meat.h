@@ -7,12 +7,21 @@
 class Meat : public QObject , public QGraphicsPixmapItem
 {
    Q_OBJECT
+
+
 private:
     QTimer* timer;
+
+
+
+
 public:
-    Meat();
+     Meat();
     ~Meat();
-void generateMeat(int ,int);
+     void generateMeat(int x ,int y);
+
+
+
 public slots:
     void moveDown();
 };

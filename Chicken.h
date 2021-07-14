@@ -5,6 +5,9 @@
 #include <QTimer>
 #include "Egg.h"
 #include "Meat.h"
+
+
+
 class Chicken : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
@@ -25,10 +28,10 @@ class Chicken : public QObject , public QGraphicsPixmapItem
 
 
 public:
- Chicken(int row);
- ~Chicken();
- void generateEgg();
- void generateMeat();
+    Chicken(int row);
+    ~Chicken();
+    void generateEgg();
+    void generateMeat();
 
 public slots:
     virtual void moveDown();

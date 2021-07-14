@@ -2,23 +2,27 @@
 #define SCORE_H
 #include <QGraphicsTextItem>
 #include <QTimer>
+#include "Pausemenu.h"
 
+#include "Spaceship.h"
 
 class Score :public QGraphicsTextItem
 {
     Q_OBJECT
+
 private:
 
+
+
 public:
-    int scores;
-//    int numberOfMeat;
+
+//funtions
     Score(int score);
     void increase(int s);
-    void increaseMeat(int m);
-    void resetNumberOfMeat();
     void reset();
-//public slots:
-//    void checker();
+    int scores;
+
+
 };
 
 #endif // SCORE_H

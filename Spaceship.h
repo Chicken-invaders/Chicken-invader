@@ -1,5 +1,7 @@
 #ifndef SPACESHIP_H
 #define SPACESHIP_H
+
+
 #include "Bullet.h"
 #include "QMouseEvent"
 #include <QGraphicsPixmapItem>
@@ -13,20 +15,23 @@
 #include "Meat.h"
 #include "Gift.h"
 #include "Explosion.h"
+
+
+
 class SpaceShip: public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
-private:
+    private:
 
-    Explosion * explo;
-    Bullet* bullet;
-    QTimer * timer;
+        Explosion * explo;
+        Bullet* bullet;
+        QTimer * timer;
 
-public: Lives * lives;
-    SpaceShip(int lives);
-    ~SpaceShip();
-public slots:
-    void Collision();
+    public: Lives * lives;
+         SpaceShip(int lives);
+        ~SpaceShip();
+    public slots:
+        void Collision();
 
 
 };

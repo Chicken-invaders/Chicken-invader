@@ -3,7 +3,7 @@
 Gift::Gift()
 {
 
-setPixmap(QPixmap(":/ images/gift.png"));
+    setPixmap(QPixmap(":/ images/gift.png"));
     timer=new QTimer();
     connect(timer , SIGNAL(timeout()) , this , SLOT(moveDown()));
     timer->start(50);
@@ -12,7 +12,7 @@ setPixmap(QPixmap(":/ images/gift.png"));
 
 Gift::~Gift()
 {
- delete timer;
+     delete timer;
 }
 
 void Gift::moveDown()

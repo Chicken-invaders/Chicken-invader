@@ -3,6 +3,8 @@
 #include <QFont>
 #include "View.h"
 extern View* v;
+
+
 Score::Score(int score) :QGraphicsTextItem() , scores(score)
 {
 setPlainText(QString::number(scores));
@@ -25,22 +27,4 @@ void Score::reset()
      setPlainText(QString::number(scores));
 }
 
-//void Score::increaseMeat(int m)
-//{
-//    numberOfMeat +=m;
-//    setPlainText(QString::number(numberOfMeat));
-//}
 
-//void Score::resetNumberOfMeat()
-//{
-//    numberOfMeat=0;
-//    setPlainText(QString::number(numberOfMeat));
-//}
-
-//void Score::checker()
-//{
-//if(numberOfMeat==5){
-//    resetNumberOfMeat();
-//    v->score->increase(10);
-//}
-//}

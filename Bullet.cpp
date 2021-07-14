@@ -21,12 +21,14 @@ Bullet::~Bullet()
 
 void Bullet::collision()
 {
+ QList<QGraphicsItem *> collidingitems = collidingItems();
 
-    QList<QGraphicsItem *> collidingitems = collidingItems();
     for(int i=0;i<collidingitems.size();i++){
        if(typeid (*(collidingitems[i]))==typeid (Chicken) || typeid (*(collidingitems[i]))==typeid (Hen) || typeid (*(collidingitems[i]))==typeid (Superhen))
        {
-        for(int j=0;j<v->chickens.size();j++){
+           //check and identify the type of object which has colloison with bullets
+
+           for(int j=0;j<v->chickens.size();j++){
             if(collidingitems[i]==dynamic_cast<QGraphicsItem*>(v->chickens[j]))
             {
 
@@ -45,33 +47,33 @@ void Bullet::collision()
                     v->meat->generateMeat(v->chickens[j]->x()+50,v->chickens[j]->y()+40);
 
                     //delete object
-                     delete collidingitems[i];
+                    delete collidingitems[i];
                     //remove hen or chicken from vector
                     v->chickens.remove(j);
              if(v->chickens.size() == 0){
                  v->endLevelSecond = v->sec;
               }
-            }
+              }
                 // delete bullet
                 delete this;
                return;
-           }
-         }
-       }
+             }
+             }
+             }
        else if(typeid (*(collidingitems[i]))==typeid (Egg)){
            v->score->increase(5);
            delete collidingitems[i];
            delete this;
            return;
-       }
-    }
+            }
+            }
 }
 
 void Bullet::moveUp()
 {
-moveBy(0,-27);
-collision();
-if(y() < 4){
+        moveBy(0,-27);
+        collision();
+    if(y() < 4){
     delete this;
 }
 }
