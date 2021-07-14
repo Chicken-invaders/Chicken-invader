@@ -37,34 +37,41 @@ void Chicken::generateMeat()
         meat->setPos(this->x()+50,this->y()+90);
 }
 void Chicken::moveDown()
-{
-    moveBy(0 ,(row+1) * 5);
-    stopCounter++;
-    if(stopCounter == 30){
-          disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-   }
+{if(v->pause==false)
+    {
+        moveBy(0 ,(row+1) * 5);
+        stopCounter++;
+        if(stopCounter == 30){
+            disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
+        }
+    }
 }
 void Chicken::motionWings()
-{
-    counter++;
-    if(counter % 4 == 0)
-    setPixmap(QPixmap(":/ images/chicken0.png"));
-    else  if(counter % 4 == 1)
-    setPixmap(QPixmap(":/ images/chicken1.png"));
-    else  if(counter % 4 == 2)
-    setPixmap(QPixmap(":/ images/chicken2.png"));
-    else  if(counter % 4 == 3)
-    setPixmap(QPixmap(":/ images/chicken1.png"));
+{   if(v->pause==false)
+    {
+        counter++;
+        if(counter % 4 == 0)
+            setPixmap(QPixmap(":/ images/chicken0.png"));
+        else  if(counter % 4 == 1)
+            setPixmap(QPixmap(":/ images/chicken1.png"));
+        else  if(counter % 4 == 2)
+            setPixmap(QPixmap(":/ images/chicken2.png"));
+        else  if(counter % 4 == 3)
+            setPixmap(QPixmap(":/ images/chicken1.png"));
+    }
+
 }
 
 void Chicken::inPlaceMotion()
-{
-    counter2++;
-    if(counter2 % 2 == 0){
-        moveBy(0 , -5);
-    }
-    else {
-        moveBy(0 , 5);
+{if(v->pause==false)
+    {
+        counter2++;
+        if(counter2 % 2 == 0){
+            moveBy(0 , -5);
+        }
+        else {
+            moveBy(0 , 5);
+        }
     }
 }
 

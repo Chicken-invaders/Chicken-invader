@@ -20,6 +20,7 @@ void Meat::generateMeat(int x ,int y)
 void Meat::moveDown(){
 
    moveBy(0,+27);
+
 if(y()>1080)
     delete this;
 

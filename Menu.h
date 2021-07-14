@@ -13,8 +13,9 @@
 
 class Menu :public QGraphicsView
 {           Q_OBJECT
+
     private:
-    QTimer * timer;
+
     QGraphicsScene * scene;
     QPushButton * newGameButton;
     QPushButton * quitButton;
@@ -22,7 +23,7 @@ class Menu :public QGraphicsView
     QPushButton * loadButton;
     public:
     Menu();
-
+ QTimer * timer;
  public slots:
        void playNewGame();
        void exitGame();

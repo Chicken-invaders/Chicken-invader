@@ -102,7 +102,7 @@ void Menu::checkEnd()
         }
     }
     if(v->spaceship->lives->lives == 0){
-        v->levelstext->setFont(QFont("sans-selif"));
+
         v->setLevelsText("       game over!");
         v->lose = true;
         if(v->sec == v->endLevelSecond+4){
