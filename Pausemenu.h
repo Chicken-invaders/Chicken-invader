@@ -19,6 +19,9 @@ public:
 
     PauseMenu();
      void keyPressEvent(QKeyEvent *);
+public slots :
+     void goToMenu();
+     void resumeF();
 };
 
 #endif // PAUSEMENU_H

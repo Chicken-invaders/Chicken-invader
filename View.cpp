@@ -112,6 +112,7 @@ void View::addChicken(int numberOfChickens)
 void View::mouseMoveEvent(QMouseEvent * event)
 {if( !lose&& pause==false)
  spaceship->setPos(event->x() -50,event->y()-50);
+
 }
 
 void View::addSpaceShip()
@@ -269,6 +270,7 @@ if(sec == endLevelSecond+4){
         gift->setPos(random,0);
    }
 
+//qDebug()<<nom->scores;
 }
 
 void View::setLevelsText(QString string)

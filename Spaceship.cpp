@@ -80,7 +80,13 @@ for(int i=0;i<collidingitems.size();i++){
      }else if(typeid (*(collidingitems[i]))==typeid (Meat)){
         delete collidingitems[i];//check whether the spaceship has recevied the meat or not
         v->nom->increase(1);
+        if(v->nom->scores==30&& v->currentLevel>2)
+        {
 
+            v->score->increase(50);
+            v->nom->reset();
+
+        }
     }else if(typeid (*(collidingitems[i]))==typeid (Gift)){
         delete collidingitems[i];//check whether the spaceship has recevied the gift or not
         v->isGifted=true;

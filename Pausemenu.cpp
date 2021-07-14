@@ -32,7 +32,7 @@ PauseMenu::PauseMenu()
    Resume->setGeometry(690,540,560,80);
    scene->addWidget(Resume);
 
-////    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
+    connect(Resume , SIGNAL(clicked()) , this , SLOT(resumeF()));
 
     Resume->setAttribute(Qt::WA_TranslucentBackground);
 //   Resume->setFixedSize(QSize(560,80));
@@ -45,7 +45,7 @@ PauseMenu::PauseMenu()
    menu->setGeometry(10,950,560,80);
    scene->addWidget(menu);
 
-////    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
+//    connect(loadButton , SIGNAL(clicked()) , this , SLOT(load()));
 
     menu->setAttribute(Qt::WA_TranslucentBackground);
 //   menu->setFixedSize(QSize(560,80));
@@ -67,5 +67,14 @@ void PauseMenu::keyPressEvent(QKeyEvent * click)
 void PauseMenu::goToMenu()
 {
 m->show();
+m->timer->stop();
 delete this;
+
+delete v;
+}
+
+void PauseMenu::resumeF()
+{ this->hide();
+    v->pause=false;
+
 }
