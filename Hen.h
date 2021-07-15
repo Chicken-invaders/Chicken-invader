@@ -9,7 +9,6 @@ public:
 
 public slots:
     virtual void motionWings();
-    virtual void moveDown();
 
 };
 

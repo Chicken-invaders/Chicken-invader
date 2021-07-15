@@ -21,16 +21,4 @@ void Superhen::motionWings()
         setPixmap(QPixmap(":/ images/superhen1.png"));
 }
 
-void Superhen::moveDown()
-{
-    moveBy(0 , (row+1) * 5);
-    stopCounter++;
-
-    if(stopCounter == 30){
-        //disconnet the signal to stop the timer
-          disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-
-   }
-}
-
 

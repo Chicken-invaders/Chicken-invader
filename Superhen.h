@@ -10,7 +10,6 @@ public:
 
 public slots:
     virtual void motionWings();
-    virtual void moveDown();
 };
 
 #endif // SUPERHEN_H

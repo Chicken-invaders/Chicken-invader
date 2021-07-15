@@ -22,14 +22,5 @@ void Hen::motionWings()
         setPixmap(QPixmap(":/ images/hen1.png"));
 }
 
-void Hen::moveDown()
-{
-    moveBy(0 , (row+1) * 5);
-    stopCounter++;
-    if(stopCounter == 30){
-          disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
-
-   }
-}
 
 
