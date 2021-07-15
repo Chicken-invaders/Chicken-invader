@@ -4,7 +4,7 @@ extern View *v;
 
 
 
-Chicken::Chicken(int row) : row (row) , lives(1)
+Chicken::Chicken(int row ) : row (row) , lives(1)
 {
     counter = 0;
     counter2=0;
@@ -48,7 +48,7 @@ void Chicken::moveDown()
     {
         moveBy(0 ,(row+1) * 5);
         stopCounter++;
-        if(stopCounter == 30){
+        if(v->chickens.last()->y() > 500){
             disconnect(moveTimer , SIGNAL(timeout()) , this , SLOT(moveDown()));
         }
     }
